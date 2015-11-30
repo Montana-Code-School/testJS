@@ -1,0 +1,15 @@
+{
+  "name": "testjs",
+  "version": "1.0.0",
+  "description": "This will be a test suite of questions for javascript practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ed Weymouth, Travis Jette, Kelly Nash, Trevor Finsaas",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
