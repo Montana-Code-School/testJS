@@ -11,10 +11,9 @@
 // ]
 
 
-var Sandbox = require("../lib/sandbox")
-  , s = new Sandbox()
-
+var Sandbox = require('../lib/sandbox');
+var s = new Sandbox();
 // Example 1 - Standard JS
-s.run( "1 + 1", function( output ) {
-  console.log( "Example 1: " + output.result + "\n" )
-})
+s.run( '1 + 1', function( output ) {
+  console.log( 'Example 1: ' + output.result + '\n' );
+});

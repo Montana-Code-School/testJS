@@ -1,6 +1,6 @@
 import React from 'react';
 var App = React.createClass({
-  render () {
+  render() {
     return (
       <div className="jumbotron">
           <ul>
