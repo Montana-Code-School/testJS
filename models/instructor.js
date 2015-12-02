@@ -7,7 +7,7 @@ var instructorSchema = mongoose.Schema({
     userName: String,
     email: String,
     password: String
-    }
+  }
 });
 
 instructorSchema.methods.generateHash = function(password) {
