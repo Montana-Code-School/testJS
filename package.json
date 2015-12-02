@@ -9,7 +9,7 @@
     "clean": "rimraf static",
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "lint": "eslint client config models questions routes server.js webpack.config.dev.js webpack.config.prod.js",
+    "lint": "eslint client config models routes server.js webpack.config.dev.js webpack.config.prod.js",
     "deploy": "npm run build && modulus deploy --project-name stripe-demo"
   },
   "author": "Ed Weymouth, Travis Jette, Kelly Nash, Trevor Finsaas",

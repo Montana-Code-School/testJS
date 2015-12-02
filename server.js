@@ -1,19 +1,19 @@
 var http 		= require('http');
-var express     = require('express');   
-var port        = process.env.PORT || 8010;
-var app         = express();  
-var mongoose    = require('mongoose');
-var passport    = require('passport');
-var flash       = require('connect-flash');
+var express = require('express');
+var port = process.env.PORT || 8010;
+var app = express();
+var mongoose = require('mongoose');
+var passport = require('passport');
+var flash = require('connect-flash');
 
-var morgan       = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
+var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var configDB = require('./config/database.js');
 
-//mongoose.connect(configDB.url);
+// mongoose.connect(configDB.url);
 
 if (process.env.NODE_ENV === 'production') {
   console.log('Running in production mode');
@@ -48,10 +48,10 @@ if (process.env.NODE_ENV === 'production') {
 
 require('./config/passport')(passport);
 
-app.use(morgan('dev')); 
+app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json()); // get information from html forms
-        app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 
@@ -66,4 +66,3 @@ app.use(express.static('public'));
 
 app.listen(port);
 console.log('Magic happens on port ' + port);
-
