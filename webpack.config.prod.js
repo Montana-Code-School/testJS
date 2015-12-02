@@ -27,10 +27,16 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [{
+    loaders: [
+      {
       test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'client')
-    }]
+      loader: 'babel',
+      include: path.join(__dirname, 'client'),
+      query: {
+          cacheDirectory: true,
+          presets: ['es2015', 'react']
+        }
+      }
+    ]
   }
 };

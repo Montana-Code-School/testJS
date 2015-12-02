@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 var App = React.createClass({
-  render: function() {
+  render () {
     return (
       <div className="jumbotron">
           <ul>
@@ -11,4 +11,4 @@ var App = React.createClass({
   }
 });
 
-React.render(<App/>, document.getElementById('first-container'));
+ReactDOM.render(<App/>, document.getElementById('first-container'));
