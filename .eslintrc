@@ -1,0 +1,30 @@
+{
+ "parser": "babel-eslint",
+ "extends": "airbnb",
+
+ "ecmaFeatures": {
+   "jsx": true,
+   "modules": true
+ },
+
+ "env": {
+   "es6": true,
+   "jasmine": true,
+ },
+
+ "rules": {
+   "no-var": 0,
+   "no-else-return": 0,
+   "func-names": 0,
+   "new-cap": 1,
+   "vars-on-top": 0,
+   "padded-blocks": 0,
+   "comma-dangle": 0,
+   "no-unused-vars": 0,
+   "no-alert": 0
+ },
+
+ "plugins": [
+   "react"
+ ],
+}
