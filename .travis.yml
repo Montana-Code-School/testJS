@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "5.1"
+notifications:
+  email:
+    recipients:
+      - harold@shinsato.com
+      - doug@kosmojo.com
+    on_success: change
+    on_failure: always
+  slack: 
+    rooms:
+      - mtcs01:VX0ooKr6F82wHpzMfTdHshmn
+    on_success: always
+    on_failure: always

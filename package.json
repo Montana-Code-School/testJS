@@ -4,12 +4,12 @@
   "description": "This will be a test suite of questions for javascript practice",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint",
     "start": "node server.js",
     "clean": "rimraf static",
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "lint": "eslint client server config models routes || true",
+    "lint": "eslint client config models questions routes server.js webpack.config.dev.js webpack.config.prod.js",
     "deploy": "npm run build && modulus deploy --project-name stripe-demo"
   },
   "author": "Ed Weymouth, Travis Jette, Kelly Nash, Trevor Finsaas",
