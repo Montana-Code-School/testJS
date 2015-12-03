@@ -44,14 +44,22 @@ var App = React.createClass({
     };
     return (
       <div>
-        <Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
-        <div style={{ marginTop: 10 }}>
-          <select onChange={this.changeMode} value={this.state.mode}>
-            <option value="markdown">Markdown</option>
-            <option value="javascript">JavaScript</option>
-          </select>
-          <button onClick={this.toggleReadOnly}>Toggle read-only mode (currently {this.state.readOnly ? 'on' : 'off'})</button>
+        <div className="container">
+          <div style={{ marginTop: 10, marginBottom: 10 }}>
+            <select onChange={this.changeMode} value={this.state.mode}>
+              <option value="javascript">JavaScript</option>
+              <option value="markdown">Markdown</option>
+            </select>
+            <button onClick={this.toggleReadOnly}>Toggle read-only mode (currently {this.state.readOnly ? 'on' : 'off'})</button>
+          </div>
+          <div className="col-md-12">
+            <Codemirror  className="col-md-8" ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
+          </div>  
+          <div>
+            <iframe className="col-md-4" src="" />
+          </div>
         </div>
+        
       </div>
     );
   }
