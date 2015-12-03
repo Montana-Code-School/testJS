@@ -1,5 +1,3 @@
-'use strict';
-
 var CM = require('codemirror');
 var React = require('react');
 var className = require('classnames');
@@ -13,16 +11,17 @@ var CodeMirror = React.createClass({
     options: React.PropTypes.object,
     path: React.PropTypes.string,
     value: React.PropTypes.string,
+    defaultValue: React.PropTypes.string,
     className: React.PropTypes.any
   },
 
-  getInitialState: function getInitialState() {
+  getInitialState() {
     return {
       isFocused: false
     };
   },
 
-  componentDidMount: function componentDidMount() {
+  componentDidMount() {
     var textareaNode = this.refs.textarea;
     this.codeMirror = CM.fromTextArea(textareaNode, this.props.options);
     this.codeMirror.on('change', this.codemirrorValueChanged);
@@ -31,9 +30,7 @@ var CodeMirror = React.createClass({
     this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
     this.codeMirror.setValue(this._currentCodemirrorValue);
   },
-
-
-  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
       this.codeMirror.setValue(nextProps.value);
     }
@@ -45,37 +42,44 @@ var CodeMirror = React.createClass({
       }
     }
   },
-  componentWillUnmount: function componentWillUnmount() {
+  componentWillUnmount() {
     // todo: is there a lighter-weight way to remove the cm instance?
     if (this.codeMirror) {
       this.codeMirror.toTextArea();
     }
   },
 
-  getCodeMirror: function getCodeMirror() {
+  componentWillUnmount() {
+    // todo: is there a lighter-weight way to remove the cm instance?
+    if (this.codeMirror) {
+      this.codeMirror.toTextArea();
+    }
+  },
+
+  getCodeMirror() {
     return this.codeMirror;
   },
 
-  focus: function focus() {
+  focus() {
     if (this.codeMirror) {
       this.codeMirror.focus();
     }
   },
 
-  focusChanged: function focusChanged(focused) {
+  focusChanged(focused) {
     this.setState({
       isFocused: focused
     });
     this.props.onFocusChange && this.props.onFocusChange(focused);
   },
 
-  codemirrorValueChanged: function codemirrorValueChanged(doc, change) {
+  codemirrorValueChanged(doc, change) {
     var newValue = doc.getValue();
     this._currentCodemirrorValue = newValue;
     this.props.onChange && this.props.onChange(newValue);
   },
 
-  render: function render() {
+  render() {
     var editorClassName = className('ReactCodeMirror', this.state.isFocused ? 'ReactCodeMirror--focused' : null, this.props.className);
 
     return React.createElement(
@@ -86,5 +90,6 @@ var CodeMirror = React.createClass({
   }
 
 });
+
 
 module.exports = CodeMirror;

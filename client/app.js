@@ -12,6 +12,7 @@ var defaults = {
 };
 
 var App = React.createClass({
+  
  getInitialState() {
    return {
      code: defaults.markdown,
@@ -39,7 +40,6 @@ var App = React.createClass({
      }.bind(this)
    });
  },
-
  updateCode(newCode) {
    this.setState({
      code: newCode
