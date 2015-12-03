@@ -1,5 +1,3 @@
-'use strict';
-
 var CM = require('codemirror');
 var React = require('react');
 var className = require('classnames');
@@ -13,6 +11,7 @@ var CodeMirror = React.createClass({
     options: React.PropTypes.object,
     path: React.PropTypes.string,
     value: React.PropTypes.string,
+    defaultValue: React.PropTypes.string,
     className: React.PropTypes.any
   },
 
@@ -32,13 +31,6 @@ var CodeMirror = React.createClass({
     this.codeMirror.setValue(this._currentCodemirrorValue);
   },
 
-  componentWillUnmount: function componentWillUnmount() {
-    // todo: is there a lighter-weight way to remove the cm instance?
-    if (this.codeMirror) {
-      this.codeMirror.toTextArea();
-    }
-  },
-
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
     if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
       this.codeMirror.setValue(nextProps.value);
@@ -49,6 +41,13 @@ var CodeMirror = React.createClass({
           this.codeMirror.setOption(optionName, nextProps.options[optionName]);
         }
       }
+    }
+  },
+
+  componentWillUnmount: function componentWillUnmount() {
+    // todo: is there a lighter-weight way to remove the cm instance?
+    if (this.codeMirror) {
+      this.codeMirror.toTextArea();
     }
   },
 
@@ -86,5 +85,6 @@ var CodeMirror = React.createClass({
   }
 
 });
+
 
 module.exports = CodeMirror;
