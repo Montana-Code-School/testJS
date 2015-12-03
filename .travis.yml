@@ -6,6 +6,10 @@ notifications:
     recipients:
       - harold@shinsato.com
       - doug@kosmojo.com
+      - ed42311@gmail.com
+      - kellynash@gmail.com
+      - finsaasfamily@hotmail.com
+      - travisjette@gmail.com
     on_success: change
     on_failure: always
   slack: 
