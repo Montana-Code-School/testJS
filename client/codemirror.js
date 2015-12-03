@@ -32,12 +32,6 @@ var CodeMirror = React.createClass({
     this.codeMirror.setValue(this._currentCodemirrorValue);
   },
 
-  componentWillUnmount: function componentWillUnmount() {
-    // todo: is there a lighter-weight way to remove the cm instance?
-    if (this.codeMirror) {
-      this.codeMirror.toTextArea();
-    }
-  },
 
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
     if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
@@ -49,6 +43,12 @@ var CodeMirror = React.createClass({
           this.codeMirror.setOption(optionName, nextProps.options[optionName]);
         }
       }
+    }
+  },
+  componentWillUnmount: function componentWillUnmount() {
+    // todo: is there a lighter-weight way to remove the cm instance?
+    if (this.codeMirror) {
+      this.codeMirror.toTextArea();
     }
   },
 

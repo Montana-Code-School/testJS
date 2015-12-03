@@ -1,6 +1,6 @@
 var http 		= require('http');
 var express = require('express');
-var port = process.env.PORT || 8010;
+var port = process.env.PORT || 8020;
 var app = express();
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -12,6 +12,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var configDB = require('./config/database.js');
+
+var exerciseModel = require ('./models/exercises');
+
 
 // mongoose.connect(configDB.url);
 
@@ -55,14 +58,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
+
 app.use(session({ secret: 'JavascriptCodeTesting' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
 require('./routes/userLoginRoutes.js')(app, passport);
+require('./routes/exerciseRoutes.js')(app, passport);
 
-app.use(express.static('public'));
 
 app.listen(port);
 console.log('Magic happens on port ' + port);
