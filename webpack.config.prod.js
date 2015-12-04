@@ -9,7 +9,6 @@ module.exports = {
     postExercise: ['webpack-hot-middleware/client',
     './client/postExerciseBox'],
   },
-  
   output: {
     path: path.join(__dirname, 'static'),
     filename: '[name].js',

@@ -60,7 +60,7 @@ module.exports = function(app, passport) {
       user: req.user // get the user out of session and pass to template
     });
   });
-  app.get('/post_exercise', isLoggedIn, function(req, res){
+  app.get('/post_exercise', isLoggedIn, function(req, res) {
     res.render('post_exercise.ejs', {
       user: req.user
     });

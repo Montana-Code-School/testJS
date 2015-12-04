@@ -13,7 +13,7 @@ var session = require('express-session');
 
 var configDB = require('./config/database.js');
 
-var exerciseModel = require ('./models/exercises');
+var exerciseModel = require('./models/exercises');
 
 
 // mongoose.connect(configDB.url);

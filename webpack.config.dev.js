@@ -6,10 +6,9 @@ module.exports = {
   entry: {
     index: ['webpack-hot-middleware/client',
     './client/app'],
-  postExercise: ['webpack-hot-middleware/client',
+    postExercise: ['webpack-hot-middleware/client',
     './client/postExerciseBox'],
   },
-  
   output: {
     path: path.join(__dirname, 'static'),
     filename: '[name].js',

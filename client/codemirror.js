@@ -48,14 +48,6 @@ var CodeMirror = React.createClass({
       this.codeMirror.toTextArea();
     }
   },
-
-  componentWillUnmount() {
-    // todo: is there a lighter-weight way to remove the cm instance?
-    if (this.codeMirror) {
-      this.codeMirror.toTextArea();
-    }
-  },
-
   getCodeMirror() {
     return this.codeMirror;
   },
