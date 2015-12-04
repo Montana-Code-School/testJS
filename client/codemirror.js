@@ -30,6 +30,7 @@ var CodeMirror = React.createClass({
     this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
     this.codeMirror.setValue(this._currentCodemirrorValue);
   },
+  
   componentWillReceiveProps(nextProps) {
     if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
       this.codeMirror.setValue(nextProps.value);
@@ -42,12 +43,14 @@ var CodeMirror = React.createClass({
       }
     }
   },
+
   componentWillUnmount() {
     // todo: is there a lighter-weight way to remove the cm instance?
     if (this.codeMirror) {
       this.codeMirror.toTextArea();
     }
   },
+
   getCodeMirror() {
     return this.codeMirror;
   },
