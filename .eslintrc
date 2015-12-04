@@ -26,6 +26,10 @@
    "no-unused-expressions": 1
  },
 
+ "globals": {
+    "$": false
+ },
+
  "plugins": [
    "react"
  ],
