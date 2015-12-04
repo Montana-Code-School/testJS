@@ -6,30 +6,6 @@ var userSchema = mongoose.Schema({
   local: {
     email: String,
     password: String
-  },
-  arrayExercises: {
-    exercise1: Boolean,
-    exercise2: Boolean,
-    exercise3: Boolean,
-    exercise4: Boolean,
-    exercise5: Boolean,
-    exercise6: Boolean,
-    exercise7: Boolean,
-    exercise8: Boolean,
-    exercise9: Boolean,
-    exercise10: Boolean
-  },
-  mathExercises: {
-    exercise1: Boolean,
-    exercise2: Boolean,
-    exercise3: Boolean,
-    exercise4: Boolean,
-    exercise5: Boolean,
-    exercise6: Boolean,
-    exercise7: Boolean,
-    exercise8: Boolean,
-    exercise9: Boolean,
-    exercise10: Boolean
   }
 });
 

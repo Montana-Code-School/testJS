@@ -23,17 +23,17 @@ var App = React.createClass({
   },
 
   sendCodeToServer(code) {
-    var data = code;
+
+    var answer = {answer: code};
     var id = '5661d0b2c8fdd09b12094aad';
       $.ajax({
-      url: this.props.url + id,
+      url: '/api/answer/'+ id,
       dataType: 'json',
       cache: false,
-      data: data,
-      type: 'PUT',
-      success: function() {
-        console.log('inside success');
-        document.location='/'
+      data: answer,
+      type: 'POST',
+      success: function(data) {
+        alert('Here is your result ' + data.pass);
       },
       error: function(xhr, status, err) {
         console.log('broken url is ');
@@ -75,14 +75,14 @@ var App = React.createClass({
            <button onClick={this.toggleReadOnly}>Toggle read-only mode (currently {this.state.readOnly ? 'on' : 'off'})</button>
          </div>
          <div className="col-md-12">
-           <Codemirror className="col-md-8" ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
+           <Codemirror className="col-md-8" ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
          </div>
          <div>
            <iframe className="col-md-4" src="" />
          </div>
        </div>
-       <button onClick={this.sendCodeToServer.bind(this, this.state.code)}> Submit </button>
-     </div>
+       <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default"> Submit </button>
+       </div>
    );
   }
 });

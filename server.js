@@ -14,6 +14,7 @@ var session = require('express-session');
 var configDB = require('./config/database.js');
 
 var exerciseModel = require('./models/exercises');
+var answerModel = require('./models/answers');
 
 
 // mongoose.connect(configDB.url);
@@ -67,6 +68,7 @@ app.use(flash());
 
 require('./routes/userLoginRoutes.js')(app, passport);
 require('./routes/exerciseRoutes.js')(app, passport);
+
 
 
 app.listen(port);

@@ -47,6 +47,32 @@ module.exports = function(app, passport) {
     });
   });
 
+  app.post('/api/answer/:id', function(req, res) {
+
+    mongoose.model('Exercises').findById({
+      _id: req.params.id
+    }, function(err, exercise) {
+      if (err) {
+        res.send('houston we have a problem');
+      } else {
+        var itPasses = exercise.answer === req.body.answer;
+        mongoose.model('Answer').create({
+          exercise: req.params.id,
+          answer: req.body.answer,
+          pass: itPasses,
+          user: req.user._id
+        }, function(err, answer){
+          if (err){
+            res.send(err);
+          } else {
+              console.log('New answer ' + answer + ' created!');
+              res.json(answer);
+          }
+        });
+        }
+    });
+  });
+
   app.put('/api/exercises/:id', function(req, res) {
     mongoose.model('Exercises').findById(req.params.id, function(err, exercise) {
       if (err) {
@@ -58,16 +84,16 @@ module.exports = function(app, passport) {
       exercise.answer = req.body.answer;
       exercise.studentAnswer = req.body.studentAnswer;
       exercise.pass = req.body.pass;
+      exercise.type = req.body.type;
 
       console.log(JSON.stringify(exercise));
 
-      exercise.save(function() {
-        if (err) {
-          res.send(err);
-        }
+      exercise.save();
+      res.send(exercise);
+        
 
-        res.json({ message: 'Exercise was updated'});
-      });
+        // res.json({ message: 'Exercise was updated'});
+      
 
     });
   });
