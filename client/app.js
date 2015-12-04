@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Codemirror = require('./Codemirror');
+var Exercises = require('./problemBox');
 
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
@@ -8,30 +9,31 @@ require('codemirror/mode/markdown/markdown');
 
 var defaults = {
   markdown: '# Trevor rules',
-  javascript: 'var component = {\n\tname: "react-codemirror",\n\tauthor: "Jed Watson",\n\trepo: "https://github.com/JedWatson/react-codemirror"\n};'
+  javascript: 'var component = {\n\tname: "Trevor, Travis, Kelly and Ed rule",\n\tauthor: "Dave and Davis",\n\trepo: "https://github.com/Montana-Code-School/testJS"\n};'
 };
 
 var App = React.createClass({
   getInitialState() {
     return {
-      code: defaults.markdown,
+      code: defaults.javascript,
       readOnly: false,
-      mode: 'markdown',
+      mode: 'javascript',
       data: []
     };
   },
 
   sendCodeToServer(code) {
     var data = code;
-    $.ajax({
-      url: '/api/exercises/',
+    var id = '5661d0b2c8fdd09b12094aad';
+      $.ajax({
+      url: this.props.url + id,
       dataType: 'json',
       cache: false,
       data: data,
-      type: 'POST',
+      type: 'PUT',
       success: function() {
         console.log('inside success');
-        document.location = '/';
+        document.location='/'
       },
       error: function(xhr, status, err) {
         console.log('broken url is ');

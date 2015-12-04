@@ -20,9 +20,11 @@ module.exports = function(app, passport) {
 
     var problem = req.body.problem;
     var answer = req.body.answer;
+    var pass = req.body.pass;
     mongoose.model('Exercises').create({
       problem: problem,
-      answer: answer
+      answer: answer,
+      pass: false
 
     }, function(err, exercises) {
       if (err) {
@@ -54,6 +56,8 @@ module.exports = function(app, passport) {
       exercise.name = req.body.name;
       exercise.problem = req.body.problem;
       exercise.answer = req.body.answer;
+      exercise.studentAnswer = req.body.studentAnswer;
+      exercise.pass = req.body.pass;
 
       console.log(JSON.stringify(exercise));
 

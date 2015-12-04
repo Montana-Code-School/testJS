@@ -6,9 +6,10 @@ var exerciseSchema = mongoose.Schema({
   name: String,
   problem: String,
   answer: String,
-  studentAnswer: String
+  studentAnswer: String,
+  pass: Boolean
 });
-  //  users: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+  // users: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 
 // create the model for users and expose it to our app
 module.exports = mongoose.model('Exercises', exerciseSchema);
