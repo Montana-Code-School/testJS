@@ -12,7 +12,7 @@ var defaults = {
 };
 
 var App = React.createClass({
-  
+
  getInitialState() {
    return {
      code: defaults.markdown,
@@ -77,11 +77,10 @@ var App = React.createClass({
            <Codemirror className="col-md-8" ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
          </div>
          <div>
-           <iframe className="col-md-4" src="" />
-           <button onClick={this.sendCodeToServer.bind(this, this.state.code)}> button </button>
+           <iframe className="col-md-4" src="" />  
          </div>
        </div>
-
+       <button onClick={this.sendCodeToServer.bind(this, this.state.code)}> Submit </button>
      </div>
    );
  }

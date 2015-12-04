@@ -6,8 +6,8 @@ var ExerciseBox = React.createClass({
 
     e.preventDefault();
 
-    var problem = React.findDOMNode(this.refs.problem).value.trim();
-    var answer = React.findDOMNode(this.refs.answer).value.trim();
+    var problem = ReactDOM.findDOMNode(this.refs.problem).value.trim();
+    var answer = ReactDOM.findDOMNode(this.refs.answer).value.trim();
 
     if(!problem){
       return;
