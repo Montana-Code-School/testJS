@@ -30,7 +30,7 @@ var CodeMirror = React.createClass({
     this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
     this.codeMirror.setValue(this._currentCodemirrorValue);
   },
-  
+
   componentWillReceiveProps(nextProps) {
     if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
       this.codeMirror.setValue(nextProps.value);

@@ -76,7 +76,7 @@ var App = React.createClass({
            <Codemirror className="col-md-8" ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
          </div>
          <div>
-           <iframe className="col-md-4" src="" />  
+           <iframe className="col-md-4" src="" />
          </div>
        </div>
        <button onClick={this.sendCodeToServer.bind(this, this.state.code)}> Submit </button>
@@ -86,4 +86,3 @@ var App = React.createClass({
 });
 
 ReactDOM.render(<App url="/api/exercises/"/>, document.getElementById('my-app'));
-
