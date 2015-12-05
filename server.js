@@ -69,7 +69,5 @@ app.use(flash());
 require('./routes/userLoginRoutes.js')(app, passport);
 require('./routes/exerciseRoutes.js')(app, passport);
 
-
-
 app.listen(port);
 console.log('Magic happens on port ' + port);

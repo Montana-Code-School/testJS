@@ -61,15 +61,15 @@ module.exports = function(app, passport) {
           answer: req.body.answer,
           pass: itPasses,
           user: req.user._id
-        }, function(err, answer){
-          if (err){
+        }, function(answer) {
+          if (err) {
             res.send(err);
           } else {
-              console.log('New answer ' + answer + ' created!');
-              res.json(answer);
+            console.log('New answer ' + answer + ' created!');
+            res.json(answer);
           }
         });
-        }
+      }
     });
   });
 
@@ -90,11 +90,7 @@ module.exports = function(app, passport) {
 
       exercise.save();
       res.send(exercise);
-        
-
         // res.json({ message: 'Exercise was updated'});
-      
-
     });
   });
 
