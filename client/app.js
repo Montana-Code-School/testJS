@@ -26,12 +26,12 @@ var App = React.createClass({
 
     var answer = {answer: code};
     var id = '5661d0b2c8fdd09b12094aad';
-      $.ajax({
-        url: '/api/answer/'+ id,
-        dataType: 'json',
-        cache: false,
-        data: answer,
-        type: 'POST',
+    $.ajax({
+      url: '/api/answer/' + id,
+      dataType: 'json',
+      cache: false,
+      data: answer,
+      type: 'POST',
       success: function(data) {
         alert('Here is your result ' + data.pass);
       },
