@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Codemirror = require('./Codemirror');
-var ProblemBox = require('./problemBox');
+var Exercises = require('./exercises');
 
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
@@ -59,6 +59,7 @@ var App = React.createClass({
     }, () => this.refs.editor.focus());
   },
   render() {
+    var self = this;
     var options = {
       lineNumbers: true,
       readOnly: this.state.readOnly,
@@ -66,6 +67,7 @@ var App = React.createClass({
     };
     return (
      <div>
+      <Exercises url={this.props.url}/>
        <div className="container">
          <div style={{ marginTop: 10, marginBottom: 10 }}>
            <select onChange={this.changeMode} value={this.state.mode}>
