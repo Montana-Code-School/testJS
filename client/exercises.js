@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ExerciseList = require('problemBox');
+// var ExerciseList = require('problemBox');
 
 var Exercises = React.createClass({
 
