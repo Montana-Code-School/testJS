@@ -4,7 +4,8 @@ var ReactDOM = require('react-dom');
 var ExerciseList = React.createClass({
 
   propTypes: {
-    url: React.PropTypes.string.isRequired
+    url: React.PropTypes.string.isRequired,
+    data: React.PropTypes.string.isRequired
   },
 
   render: function() {
@@ -64,6 +65,6 @@ var Exercises = React.createClass({
           </div>
           );
   }
-  });
+});
 
 ReactDOM.render(<Exercises url="/api/exercises/"/>, document.getElementById('exerciseBox'));
