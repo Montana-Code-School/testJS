@@ -13,6 +13,11 @@ var defaults = {
 };
 
 var App = React.createClass({
+
+  propTypes: {
+    url: React.PropTypes.string.isRequired
+  },
+
   getInitialState() {
     return {
       code: defaults.javascript,
