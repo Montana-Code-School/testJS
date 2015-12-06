@@ -18,10 +18,14 @@ module.exports = function(app, passport) {
 
   app.post('/api/exercises/', function(req, res) {
 
+    var type = req.body.type;
+    var name = req.body.name;
     var problem = req.body.problem;
     var answer = req.body.answer;
     var pass = req.body.pass;
     mongoose.model('Exercises').create({
+      type: type,
+      name: name,
       problem: problem,
       answer: answer,
       pass: false
