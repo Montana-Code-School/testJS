@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     index: ['webpack-hot-middleware/client',
     './client/app'],
-    postExercise: ['webpack-hot-middleware/client',
+    postExerciseBox: ['webpack-hot-middleware/client',
     './client/postExerciseBox'],
   },
   output: {

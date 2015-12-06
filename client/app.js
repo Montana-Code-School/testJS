@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Codemirror = require('./Codemirror');
-var Exercises = require('./problemBox');
+var ProblemBox = require('./problemBox');
 
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
