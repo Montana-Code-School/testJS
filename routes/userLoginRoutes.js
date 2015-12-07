@@ -60,6 +60,19 @@ module.exports = function(app, passport) {
       user: req.user // get the user out of session and pass to template
     });
   });
+
+  // app.get('/profile', isLoggedIn, function(req, res) {
+  //       mongoose.model('Answer').find({
+  //           user: req.user._id
+  //       }).populate('exercise').exec(function(err, comments) {
+  //           res.render('profile.ejs', {
+  //               user: req.user, // get the user out of session and pass to template
+  //               answers: answers
+  //           });
+  //       })
+  //   });
+
+
   app.get('/post_exercise', isLoggedIn, function(req, res) {
     res.render('post_exercise.ejs', {
       user: req.user

@@ -9,20 +9,25 @@ var ExerciseList = React.createClass({
   },
 
   render: function() {
+
     var exerciseData = this.props.data.map(function(exercise) {
-      if (exercise._id === '5661d0b2c8fdd09b12094aad') {
-        return (
-          <div key={exercise._id} className="well">
-            <div><h1>{exercise.name}</h1></div>
-            <div><h3> Solve this Problem: {exercise.problem}</h3></div>
-          </div>
-        );
-      }
+      return (
+        <div key={exercise._id} className="well">
+          <div><h1>{exercise.name}</h1></div>
+          <div><h3> Solve this Problem: {exercise.problem}</h3></div>
+        </div>
+      );
     });
-    return (
-      <div>
-        {exerciseData}
-      </div>
+
+    var indexPlusOne = 0;
+    var exerciseDataLoop = this.props.data.map(function(exercise) {
+      console.log(exercise)
+    });
+
+        return (
+          <div>
+            {exerciseData[indexPlusOne]}
+          </div>
       );
   }
 });

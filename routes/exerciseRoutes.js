@@ -7,7 +7,21 @@ var Exercises = require('../models/exercises');
 module.exports = function(app, passport) {
 
   app.get('/api/exercises/', function(req, res) {
-    mongoose.model('Exercises').find({}, function(err, exercise) {
+    mongoose.model('Exercises').find({})
+    .populate('Users').exec(function(err, exercise) {
+      if (err) {
+        return console.log('err');
+      } else {
+        res.json(exercise);
+      }
+    });
+  });
+
+    app.get('/api/user/exercises/', function(req, res) {
+    mongoose.model('User').findById({
+      _id: req.user._id
+    })
+    .populate('exercises').exec(function(err, exercise) {
       if (err) {
         return console.log('err');
       } else {
@@ -86,8 +100,8 @@ module.exports = function(app, passport) {
       exercise.name = req.body.name;
       exercise.problem = req.body.problem;
       exercise.answer = req.body.answer;
-      exercise.studentAnswer = req.body.studentAnswer;
-      exercise.pass = req.body.pass;
+      exercise.userAnswer = req.body.userAnswer;
+      exercise.user = req.body.user;
       exercise.type = req.body.type;
 
       console.log(JSON.stringify(exercise));
