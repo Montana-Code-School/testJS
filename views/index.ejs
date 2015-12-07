@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -8,9 +9,19 @@
 </head>
 <body>
 <% include ./partials/navbar.ejs %>
+
+<% if (!user) { %>        
+       <div class="jumbotronHomePage">
+           <div align="center">
+
+               <a href="/"><button class="ghost-button-semi-transparent"> Find My Tap Room </button></a>
+               <button class="ghost-button-semi-transparent" data-toggle="modal" data-target="#loginModal"> Log In </button>
+               <% } else { %>
 <div class="container">
     <div id="exerciseBox"></div>
     <div id="my-app"></div>
+
+                <% } %>
     
 
 </div>
