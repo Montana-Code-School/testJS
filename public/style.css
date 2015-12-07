@@ -1,3 +1,31 @@
 #home-title {
 	text-align: center;
 }
+/*.ghost-button-semi-transparent {
+ display: inline-block;
+ width: 380px;
+ height:150px;
+ padding: 30px 60px 30px 60px;
+ color: #fff;
+ border: 2px solid #fff;
+ margin: 10px;
+ font-family: "Noto",Helvetica,Arial,sans-serif;
+ font-weight: 650px;
+ font-size: 20px;
+ text-align: center;
+ text-transform: uppercase;
+ outline: none;
+ background-color: rgba(0, 0, 0, 0.6);
+ text-decoration: none;
+ transition: background-color 0.2s ease-out,
+             border-color 0.2s ease-out;
+}
+.ghost-button-semi-transparent:hover,
+.ghost-button-semi-transparent:active {
+ background-color: #fff; /* fallback */
+ background-color: rgba(0, 0, 0, 0.2);
+ border-color: #fff; /* fallback */
+ border-color: rgba(255, 255, 255, 0.4);
+ transition: background-color 0.3s ease-in,
+             border-color 0.3s ease-in;
+}*/
