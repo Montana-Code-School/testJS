@@ -30,7 +30,7 @@ var App = React.createClass({
   sendCodeToServer(code) {
 
     var answer = {answer: code};
-    var id = '56647b9638b55b1f05f24fbd';
+    var id = '5661d0b2c8fdd09b12094aad';
     $.ajax({
       url: '/api/answer/' + id,
       dataType: 'json',
@@ -38,7 +38,7 @@ var App = React.createClass({
       data: answer,
       type: 'POST',
       success: function(data) {
-        alert('Here is your result ' + data.pass);
+        alert('Your answer is ');
       },
       error: function(xhr, status, err) {
         console.log('broken url is ');
@@ -72,7 +72,6 @@ var App = React.createClass({
     };
     return (
      <div>
-      <Exercises url={this.props.url}/>
        <div className="container">
          <div style={{ marginTop: 10, marginBottom: 10 }}>
            <select onChange={this.changeMode} value={this.state.mode}>

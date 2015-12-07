@@ -10,7 +10,7 @@ var ExerciseList = React.createClass({
 
   render: function() {
     var exerciseData = this.props.data.map(function(exercise) {
-      if (exercise._id === '56647b9638b55b1f05f24fbd') {
+      if (exercise._id === '5661d0b2c8fdd09b12094aad') {
         return (
           <div key={exercise._id} className="well">
             <div><h1>{exercise.name}</h1></div>

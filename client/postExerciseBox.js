@@ -10,14 +10,16 @@ var ExerciseBox = React.createClass({
 
     e.preventDefault();
 
+    var name = ReactDOM.findDOMNode(this.refs.name).value.trim();
+    var type = ReactDOM.findDOMNode(this.refs.type).value.trim();
     var problem = ReactDOM.findDOMNode(this.refs.problem).value.trim();
     var answer = ReactDOM.findDOMNode(this.refs.answer).value.trim();
-
+    
     if (!problem) {
       return;
     }
 
-    var data = ({problem: problem, answer: answer});
+    var data = ({problem: problem, answer: answer, name: name, type: type});
 
     $.ajax({
       url: this.props.url,
@@ -44,7 +46,7 @@ var ExerciseBox = React.createClass({
       return;
     }
 
-    var data = ({problem: problem, answer: answer});
+    var data = ({problem: problem, answer: answer, name: name, type: type});
 
     $.ajax({
       url: this.props.url + id,
@@ -72,13 +74,21 @@ var ExerciseBox = React.createClass({
 
         <form>
           <div className="col-sm-6 col-md-6">
+             <div className="form-group">
+              <label>Exercise Name</label>
+              <textarea rows="1" type="text" className="form-control" ref="name" placeholder="Exercise Name" />
+            </div>
+            <div className="form-group">
+              <label>Exercise Category</label>
+              <textarea rows="1" type="text" ref="type" className="form-control" placeholder="Exercise Type" />
+            </div>
             <div className="form-group">
               <label>Exercise Problem</label>
-              <textarea rows="15" type="text" className="form-control" ref="problem" placeholder="Exercise Problem" />
+              <textarea rows="10" type="text" className="form-control" ref="problem" placeholder="Exercise Problem" />
             </div>
             <div className="form-group">
               <label>Exercise Answer</label>
-              <textarea rows="15" type="text" ref="answer" className="form-control" placeholder="Exercise Answer" />
+              <textarea rows="10" type="text" ref="answer" className="form-control" placeholder="Exercise Answer" />
             </div>
             <div className="form-group">
               <button onClick={this.handleSubmit} type="submit" className="btn btn-default"> Submit </button>

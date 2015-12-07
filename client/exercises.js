@@ -41,5 +41,5 @@ var Exercises = React.createClass({
           );
   }
 });
-
-module.exports = Exercises;
+ReactDOM.render(<Exercises url="/api/exercises/"/>, document.getElementById('exerciseBox'));
+//module.exports = Exercises;
