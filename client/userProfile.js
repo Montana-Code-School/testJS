@@ -25,24 +25,6 @@ var UserProfile = React.createClass({
     });
   },
 
-    // loadAnswersFromServer: function(answer) {
-    //   console.log('were inside' + data)
-    //   $.ajax({
-    //     url: this.props.url,
-    //     dataType: 'json',
-    //     cache: false,
-    //     data: data,
-    //     success: function(data) {
-    //         console.log('posting data!', data, response);
-    //         this.setState({data: data});
-    //         document.location = '/profile';
-    //       },
-    //       error: function(xhr, status, err) {
-    //         console.log(err);
-    //       }.bind(this)
-    //   });
-    // },
-
   componentDidMount: function() {
     console.log('mounted')
     this.loadAnswersFromServer();
