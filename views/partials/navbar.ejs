@@ -1,46 +1,143 @@
-  <div class="navbar navbar-default navbar-static-top">
-    <div class="headerimage">
-      <div class="container"> 
-        <div class="header">
+<!-- Working on Modal. Coming back to this soon -->
 
-          <a href="/" class="navbar-brand">Test JS</a>
-            <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#" data-toggle="dropdown">About<span class="caret"></span></a>
+<div class="navbar navbar-default navbar-static-top">
+  <div class="headerimage">
+    <div class="container"> 
+      <div class="header">
+        <a href="/" class="navbar-brand">Test JS</a>
+          <ul class="nav navbar-nav navbar-right">
+            <% if(!user) { %>
+                <li><a><button type='button' class='btn-menu' data-toggle='modal' data-target='#loginModal'>Login</button></a></li>
+                <li><a><button type='button' class='btn-menu' data-toggle='modal' data-target='#signupModal'>Sign Up</button></a></li>
+                <%} else if (user.local.role === 'admin') { %>
+                    <li>
+                      <a href="#" data-toggle="dropdown">About<span class="caret"></span></a>
 
-            <ul class="dropdown-menu">
-              <li><a href="/about">My Story</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          
-          <li><a href="/profile">My Profile</a></li>
-          </li>
+                      <ul class="dropdown-menu">
+                        <li><a href="/about">My Story</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                      </ul>
+                    
+                    <li><a href="/profile">My Profile</a></li>
+                    </li>
 
-          <li>
-         
-          <a href="#" data-toggle="dropdown">Student Menu<span class="caret"></span></a>
+                    <li>
+                   
+                    <a href="#" data-toggle="dropdown">Instructor Menu<span class="caret"></span></a>
 
-            <ul class="dropdown-menu">
-                <li><a href="/login">Log In</a></li>
-                <li><a href="/signup">Sign Up</a></li>
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/post_exercise">Post Exercise</a></li>
-                <li><a href="/logout">Log Out</a></li>
-            </ul>
-          </li>
-          <li>
-          <a href="#" data-toggle="dropdown">Exercises <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="/login">Log In</a></li>
+                          <li><a href="/signup">Sign Up</a></li>
+                          <li><a href="/profile">Profile</a></li>
+                          <li><a href="/post_exercise">Post Exercise</a></li>
+                          <li><a href="/logout">Log Out</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                    <a href="#" data-toggle="dropdown">Exercises <span class="caret"></span></a>
 
-            <ul class="dropdown-menu">
-                <li><a href="/arrays">Arrays</a></li>
-                <li><a href="/variables">Variables</a></li>
-                <li><a href="/functions">Functions</a></li>
-                <li><a href="/strings">Strings</a></li>
-            </ul>
+                      <ul class="dropdown-menu">
+                          <li><a href="/arrays">Arrays</a></li>
+                          <li><a href="/variables">Variables</a></li>
+                          <li><a href="/functions">Functions</a></li>
+                          <li><a href="/strings">Strings</a></li>
+                      </ul>
 
-          </li>
-        </ul>
+                    </li>
+                  <% } else { %>
+                     <li>
+                      <a href="#" data-toggle="dropdown">About<span class="caret"></span></a>
+
+                      <ul class="dropdown-menu">
+                        <li><a href="/about">My Story</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                      </ul>
+                    
+                    <li><a href="/profile">My Profile</a></li>
+                    </li>
+
+                    <li>
+                   
+                    <a href="#" data-toggle="dropdown">Student Menu<span class="caret"></span></a>
+
+                      <ul class="dropdown-menu">
+                          <li><a href="/login">Log In</a></li>
+                          <li><a href="/signup">Sign Up</a></li>
+                          <li><a href="/profile">Profile</a></li>
+                          <li><a href="/logout">Log Out</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                    <a href="#" data-toggle="dropdown">Exercises <span class="caret"></span></a>
+
+                      <ul class="dropdown-menu">
+                          <li><a href="/arrays">Arrays</a></li>
+                          <li><a href="/variables">Variables</a></li>
+                          <li><a href="/functions">Functions</a></li>
+                          <li><a href="/strings">Strings</a></li>
+                      </ul>
+
+                    </li>
+                    <% } %>
+      </ul>
+
+        <div data-backdrop="false" class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" align="left">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="form modal-title" id="myModalLabel"><span class="fa fa-sign-in"></span> Login</h4>
+              </div>
+              <div class="modal-body">
+                  <!-- LOGIN FORM -->
+                  <form action="/login" method="post">
+                      <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" class="form-control" name="email">
+                      </div>
+                      <div class="form-group">
+                          <label>Password</label>
+                          <input type="password" class="form-control" name="password">
+                      </div>
+
+                      <button type="submit" class="btn btn-warning btn-md">Login</button>
+                  </form><br>
+                  <p>Need an account? <a href="/signup">Signup</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-backdrop="false" class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" align="left">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="form modal-title" id="myModalLabel"><span class="fa fa-sign-in"></span> Signup</h4>
+                </div>
+                <div class="modal-body">
+                  <!-- Signup FORM -->
+                  <form action="/signup" method="post">
+                      <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" class="form-control" name="email">
+                      </div>
+                      <div class="form-group">
+                          <label>Password</label>
+                          <input type="password" class="form-control" name="password">
+                      </div>
+                      <button type="submit" class="btn btn-warning btn-md">Sign Up</button>
+                  </form><br>
+                    <p>Have an account? <a href="/login">Login</a></p>
+                </div>
+              </div>
+            </div>
+        </div>
+            
+        
       </div>
     </div>
   </div>
 </div>
+
+
