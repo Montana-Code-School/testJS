@@ -1,33 +1,15 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var UserProfile = require('./userProfile');
 
 var UserExerciseData = React.createClass({
 
-  getInitialState: function() {
-    return {data: []};
-  },
-
-  componentDidMount: function() {
-    this.loadAnswersFromServer();
-  },
-    loadAnswersFromServer () {
-      $.ajax({
-        url: 'api/answers',
-        dataType: 'json',
-        data: data,
-        type: 'GET',
-        success: function(response) {
-            console.log('posting data!', data, response);
-            document.location = '/profile';
-          },
-          error: function(xhr, status, err) {
-            console.log(err);
-          }.bind(this)
-      });
+    propTypes: {
+        data: React.PropTypes.array.isRequired
     },
 
     render:function() {
-      var exercise = this.state.data.map(function(c) {
+      var exercise = this.props.data.map(function(c) {
         return (
           <div>
             <h1>World</h1>
