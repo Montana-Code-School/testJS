@@ -35,7 +35,6 @@ var UserProfile = React.createClass({
   render: function() {
     return (
       <div>
-        <h1>Hello</h1>
         <UserExerciseData url={this.props.url} data={this.state.data}/>
       </div>
       );

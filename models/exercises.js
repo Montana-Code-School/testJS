@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
 var exerciseSchema = mongoose.Schema({
+  exerciseNumber: Number, 
   type: String,
   name: String,
   problem: String,

@@ -39,6 +39,7 @@ module.exports = function(app, passport) {
     var answer = req.body.answer;
     var pass = req.body.pass;
     var user = req.body.user;
+    var exerciseNumber = req.body.exerciseNumber;
 
     mongoose.model('Exercises').create({
       type: type,
@@ -46,7 +47,8 @@ module.exports = function(app, passport) {
       problem: problem,
       answer: answer,
       pass: false,
-      user: req.user._id
+      user: req.user._id,
+      exerciseNumber: exerciseNumber
 
     }, function(err, exercises) {
       if (err) {
@@ -118,6 +120,7 @@ module.exports = function(app, passport) {
       exercise.userAnswer = req.body.userAnswer;
       exercise.user = req.body.user;
       exercise.type = req.body.type;
+      exercise.exerciseNumber = req.body.exerciseNumber;
 
       console.log(JSON.stringify(exercise));
 

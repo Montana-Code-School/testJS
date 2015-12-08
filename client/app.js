@@ -27,10 +27,39 @@ var App = React.createClass({
     };
   },
 
+  // nextExercise(exercise) {
+  //   var data = {(exerciseNumber: exerciseNumber)}
+  //   $.ajax({
+  //     url: '/api/exercises/',
+  //     dataType: 'json',
+  //     cache: false,
+  //     data: data,
+  //     type: 'GET',
+  //     success: function(data) {
+  //       alert('Your answer is ');
+  //     },
+  //     error: function(xhr, status, err) {
+  //       console.log('broken url is ');
+  //       console.error(status, err.toString());
+  //     }
+  //   });
+  // },
+
   sendCodeToServer(code) {
 
+    // var indexPlusOne = 0;
+    // var exerciseDataLoop = this.props.data.map(function(exercise) {
+    //     for(var i=0; i <= exercise.length; i++) {
+    //       if(exercise.exerciseNumber == 1) {
+    //         return exercise.problem
+    //       }
+    //       console.log(indexPlusOne)
+    //       indexPlusOne++;
+    //     }
+    // });
+
     var answer = {answer: code};
-    var id = '5665d74a62d4a239100a2662';
+    var id = '56671e9b2b50a4fa249bec24';
     $.ajax({
       url: '/api/answer/' + id,
       dataType: 'json',
@@ -46,6 +75,7 @@ var App = React.createClass({
       }
     });
   },
+
   updateCode(newCode) {
     this.setState({
       code: newCode
