@@ -16,7 +16,6 @@ var configDB = require('./config/database.js');
 var exerciseModel = require('./models/exercises');
 var answerModel = require('./models/answers');
 
-
 // mongoose.connect(configDB.url);
 
 if (process.env.NODE_ENV === 'production') {
@@ -68,6 +67,7 @@ app.use(flash());
 
 require('./routes/userLoginRoutes.js')(app, passport);
 require('./routes/exerciseRoutes.js')(app, passport);
+//require('./routes/userExerciseRoutes.js')(app, passport);
 
 app.listen(port);
 console.log('Magic happens on port ' + port);

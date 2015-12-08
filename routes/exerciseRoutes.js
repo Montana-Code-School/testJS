@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Exercises = require('../models/exercises');
+var Answer = require('../models/answers');
 
 module.exports = function(app, passport) {
 
@@ -37,12 +38,15 @@ module.exports = function(app, passport) {
     var problem = req.body.problem;
     var answer = req.body.answer;
     var pass = req.body.pass;
+    var user = req.body.user;
+
     mongoose.model('Exercises').create({
       type: type,
       name: name,
       problem: problem,
       answer: answer,
-      pass: false
+      pass: false,
+      user: req.user._id
 
     }, function(err, exercises) {
       if (err) {
@@ -54,6 +58,7 @@ module.exports = function(app, passport) {
     });
   });
 
+
   app.get('/api/exercises/:id', function(req, res) {
     mongoose.model('Exercises').findById({
       _id: req.params.id
@@ -64,6 +69,16 @@ module.exports = function(app, passport) {
       res.json(exercise);
     });
   });
+
+  app.get('/api/answer/', function(req, res) {
+    mongoose.model('Answer').find({}, function(err, answer) {
+      if (err) {
+        return console.log('err');
+      } else {
+        res.json(answer);
+      }
+    });
+  })
 
   app.post('/api/answer/:id', function(req, res) {
 

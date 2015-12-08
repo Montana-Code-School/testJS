@@ -9,6 +9,7 @@
     </style>
 </head>
 <body>
+<% include ./partials/navbar.ejs %>
 <div class="container">
 
     <div class="page-header text-center">
@@ -21,13 +22,7 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
+                <div id="profile-comp"></div>
 
             </div>
         </div>
@@ -35,5 +30,12 @@
     </div>
 
 </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/1.1.1/js/md5.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+<script src="./static/userProfile.js"></script>
 </body>
 </html>

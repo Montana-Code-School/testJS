@@ -7,7 +7,7 @@ var exerciseSchema = mongoose.Schema({
   problem: String,
   answer: String,
   user: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-  // userAnswer: [{type: mongoose.Schema.Types.ObjectId, ref: 'Answer'}]
+  //userAnswer: [{type: mongoose.Schema.Types.ObjectId, ref: 'Answer'}]
 });
 
 

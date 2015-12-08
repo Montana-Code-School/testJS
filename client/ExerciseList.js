@@ -19,14 +19,18 @@ var ExerciseList = React.createClass({
       );
     });
 
-    var indexPlusOne = 0;
-    var exerciseDataLoop = this.props.data.map(function(exercise) {
-      console.log(exercise)
-    });
+    // var indexPlusOne = 0;
+    // var exerciseDataLoop = this.props.data.map(function(answer) {
+    //     if () { 
+    //       console.log(indexPlusOne)
+    //       indexPlusOne++;
+    //     }
+      
+    // });
 
         return (
           <div>
-            {exerciseData[indexPlusOne]}
+            {exerciseData}
           </div>
       );
   }

@@ -8,6 +8,8 @@ module.exports = {
     './client/app'],
     postExerciseBox: ['webpack-hot-middleware/client',
     './client/postExerciseBox'],
+    userProfile: ['webpack-hot-middleware/client',
+      './client/userProfile'],
   },
   output: {
     path: path.join(__dirname, 'static'),
