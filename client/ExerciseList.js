@@ -19,11 +19,11 @@ var ExerciseList = React.createClass({
       );
     });
 
-      return (
-        <div>
-          {exerciseData}
-        </div>
-      );
+    return (
+      <div>
+        {exerciseData}
+      </div>
+    );
   }
 });
 

@@ -14,13 +14,13 @@ var ExerciseBox = React.createClass({
     var type = ReactDOM.findDOMNode(this.refs.type).value.trim();
     var problem = ReactDOM.findDOMNode(this.refs.problem).value.trim();
     var answer = ReactDOM.findDOMNode(this.refs.answer).value.trim();
-    var exerciseNumber = ReactDOM.findDOMNode(this.refs.exerciseNumber).value.trim();
+
 
     if (!problem) {
       return;
     }
 
-    var data = ({problem: problem, answer: answer, name: name, type: type, exerciseNumber: exerciseNumber});
+    var data = ({problem: problem, answer: answer, name: name, type: type});
 
     $.ajax({
       url: this.props.url,
@@ -77,10 +77,6 @@ var ExerciseBox = React.createClass({
 
         <form>
           <div className="col-sm-6 col-md-6">
-             <div className="form-group">
-              <label>Exercise Number</label>
-              <textarea rows="1" type="text" className="form-control" ref="exerciseNumber" placeholder="Exercise Number" />
-            </div>
              <div className="form-group">
               <label>Exercise Name</label>
               <textarea rows="1" type="text" className="form-control" ref="name" placeholder="Exercise Name" />
