@@ -18,7 +18,7 @@ module.exports = function(app, passport) {
     });
   });
 
-    app.get('/api/user/exercises/', function(req, res) {
+  app.get('/api/user/exercises/', function(req, res) {
     mongoose.model('User').findById({
       _id: req.user._id
     })
@@ -78,7 +78,7 @@ module.exports = function(app, passport) {
         res.json(answer);
       }
     });
-  })
+  });
 
   app.post('/api/answer/:id', function(req, res) {
 

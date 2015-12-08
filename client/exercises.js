@@ -42,4 +42,4 @@ var Exercises = React.createClass({
   }
 });
 ReactDOM.render(<Exercises url="/api/exercises/"/>, document.getElementById('exerciseBox'));
-//module.exports = Exercises;
+//  module.exports = Exercises;

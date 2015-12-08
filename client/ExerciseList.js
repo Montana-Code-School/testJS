@@ -21,18 +21,17 @@ var ExerciseList = React.createClass({
 
     // var indexPlusOne = 0;
     // var exerciseDataLoop = this.props.data.map(function(answer) {
-    //     if () { 
+    //     if () {
     //       console.log(indexPlusOne)
     //       indexPlusOne++;
     //     }
-      
     // });
 
-        return (
-          <div>
-            {exerciseData}
-          </div>
-      );
+    return (
+      <div>
+        {exerciseData}
+      </div>
+    );
   }
 });
 

@@ -3,12 +3,20 @@ var ReactDOM = require('react-dom');
 var UserExerciseData = require('./userExerciseData.js');
 
 var UserProfile = React.createClass({
+  propTypes: {
+    url: React.PropTypes.string.isRequired
+  },
 
   getInitialState: function() {
     return {data: []};
   },
 
-    loadAnswersFromServer: function() {
+  componentDidMount: function() {
+    console.log('mounted');
+    this.loadAnswersFromServer();
+  },
+
+  loadAnswersFromServer: function() {
 
     $.ajax({
       url: this.props.url,
@@ -24,19 +32,14 @@ var UserProfile = React.createClass({
       }.bind(this)
     });
   },
-
-  componentDidMount: function() {
-    console.log('mounted')
-    this.loadAnswersFromServer();
-  },
-    render:function(){
-      return (
-        <div>
-          <h1>Hello</h1>
-          <UserExerciseData url={this.props.url} data={this.state.data}/>
-        </div>
-        );
-    }
+  render: function() {
+    return (
+      <div>
+        <h1>Hello</h1>
+        <UserExerciseData url={this.props.url} data={this.state.data}/>
+      </div>
+      );
+  }
 });
 
-ReactDOM.render(<UserProfile url='/api/answer/'/>, document.getElementById('profile-comp'));
+ReactDOM.render(<UserProfile url="/api/answer/"/>, document.getElementById('profile-comp'));

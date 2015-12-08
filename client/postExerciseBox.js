@@ -14,7 +14,7 @@ var ExerciseBox = React.createClass({
     var type = ReactDOM.findDOMNode(this.refs.type).value.trim();
     var problem = ReactDOM.findDOMNode(this.refs.problem).value.trim();
     var answer = ReactDOM.findDOMNode(this.refs.answer).value.trim();
-    
+
     if (!problem) {
       return;
     }
@@ -40,6 +40,8 @@ var ExerciseBox = React.createClass({
 
     var problem = React.findDOMNode(this.refs.problem).value.trim();
     var answer = React.findDOMNode(this.refs.answer).value.trim();
+    var type = React.findDOMNode(this.refs.type).value.trim();
+    var name = React.findDOMNode(this.refs.name).value.trim();
 
     console.log(id);
     if (!problem) {
