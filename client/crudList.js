@@ -7,9 +7,9 @@ var CrudList = React.createClass({
   handleUpdate: function(id) {
 
    var problem = this.refs.problem.value.trim();
-   var answer = ReactDOM.findDOMNode(this.refs.answer).value.trim();
-   var type = ReactDOM.findDOMNode(this.refs.type).value.trim();
-   var name = ReactDOM.findDOMNode(this.refs.name).value.trim();
+   var answer = this.refs.answer.value.trim();
+   var type = this.refs.type.value.trim();
+   var name = this.refs.name.value.trim();
 
    if (!problem) {
      return;
@@ -30,6 +30,26 @@ var CrudList = React.createClass({
        console.error(this.props.url, status, err.toString());
      }.bind(this)
    });
+ },
+
+ deleteExercise: function(id) {
+
+  var areYouSure = confirm("Are you sure that you want to delete this exercise?");
+  if (areYouSure == true){
+    $.ajax({
+       url: '/api/exercises/' + id,
+       dataType: 'json',
+       type: 'DELETE',
+       success: function() {
+         console.log('DELETING Exercise!');
+         document.location = '/post_exercise';
+       }.bind(this),
+       error: function(xhr, status, err) {
+         console.log('Did not update!');
+         console.error(this.props.url, status, err.toString());
+       }.bind(this)
+    });
+  }
  },
 
  getInitialState: function(){
@@ -100,6 +120,7 @@ var CrudList = React.createClass({
              <tr>
                <td>{exercises.name}</td>
                <td><button onClick={that.toggle.bind(this, exercises.name)}></button></td>
+               <td><button onClick={that.deleteExercise.bind(this, exercises._id)}></button></td>
              </tr>
             </tbody> 
            </table> 
