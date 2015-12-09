@@ -42,7 +42,7 @@ var App = React.createClass({
   sendCodeToServer(code) {
 
     var answer = {answer: code};
-    var id = '56671e9b2b50a4fa249bec24';
+    var id = '566756355203c87e2cf01502';
     $.ajax({
       url: '/api/answer/' + id,
       dataType: 'json',
