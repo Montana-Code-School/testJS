@@ -103,7 +103,7 @@ var App = React.createClass({
            <Codemirror className="col-md-8" ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
          </div>
       </div>
-       <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id='handleSubmit'> Submit </button>
+       <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handleSubmit"> Submit </button>
        </div>
    );
   }
