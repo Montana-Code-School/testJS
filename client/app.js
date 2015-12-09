@@ -3,6 +3,8 @@ var ReactDOM = require('react-dom');
 var Codemirror = require('./Codemirror');
 var Exercises = require('./exercises');
 
+require('codemirror/addon/lint/lint.js');
+require('codemirror/addon/lint/css-lint.js');
 require('codemirror/mode/javascript/javascript');
 require('codemirror/mode/xml/xml');
 require('codemirror/mode/markdown/markdown');
@@ -83,7 +85,9 @@ var App = React.createClass({
     var options = {
       lineNumbers: true,
       readOnly: this.state.readOnly,
-      mode: this.state.mode
+      mode: this.state.mode,
+      lint: true,
+      theme: 'midnight'
     };
     return (
      <div>
