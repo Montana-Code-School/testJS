@@ -10,6 +10,8 @@ module.exports = {
     './client/postExerciseBox'],
     userProfile: ['webpack-hot-middleware/client',
       './client/userProfile'],
+    crudBox: ['webpack-hot-middleware/client',
+    './client/crudBox'],
   },
   output: {
     path: path.join(__dirname, 'static'),

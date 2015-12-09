@@ -28,14 +28,3 @@ var ExerciseList = React.createClass({
 });
 
 module.exports = ExerciseList;
-
-// var indexPlusOne = 0;
-//     var exerciseDataLoop = this.props.data.map(function(exercise) {
-//         for(var i=0; i <= exercise.length; i++) {
-//           if(code === pass onClick) {
-//             go to the next exercise id
-//           }
-//           console.log(indexPlusOne)
-//           indexPlusOne++;
-//         }
-//     });

@@ -23,7 +23,7 @@ var ExerciseBox = React.createClass({
     var data = ({problem: problem, answer: answer, name: name, type: type});
 
     $.ajax({
-      url: this.props.url,
+      url: '/api/exercises/',
       dataType: 'json',
       data: data,
       type: 'POST',
@@ -37,46 +37,17 @@ var ExerciseBox = React.createClass({
       }.bind(this)
     });
   },
-  handleUpdate(id) {
-
-    var problem = React.findDOMNode(this.refs.problem).value.trim();
-    var answer = React.findDOMNode(this.refs.answer).value.trim();
-    var type = React.findDOMNode(this.refs.type).value.trim();
-    var name = React.findDOMNode(this.refs.name).value.trim();
-
-    console.log(id);
-    if (!problem) {
-      return;
-    }
-
-    var data = ({problem: problem, answer: answer, name: name, type: type});
-
-    $.ajax({
-      url: this.props.url + id,
-      dataType: 'json',
-      data: data,
-      type: 'PUT',
-      success: function(response) {
-        console.log('Updating Exercise!', data, response);
-        document.location = '/post_exercise';
-      },
-      error: function(xhr, status, err) {
-        console.log('Did not <update></update>!');
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
 
   render: function() {
     return (
 
-    <div>
-      <div className="col-sm-6 col-md-12">
+    <div className="col-md-4">
+      <div >
         <h1>Enter New Exercises</h1>
       </div>
 
         <form>
-          <div className="col-sm-6 col-md-6">
+          <div >
              <div className="form-group">
               <label>Exercise Name</label>
               <textarea rows="1" type="text" className="form-control" ref="name" placeholder="Exercise Name" />
