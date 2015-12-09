@@ -111,24 +111,25 @@ module.exports = function(app, passport) {
   });
 
   app.put('/api/exercises/:id', function(req, res) {
-    mongoose.model('Exercises').findById(req.params.id, function(err, exercise) {
+    mongoose.model('Exercises').findById({
+      _id: req.params.id}, function(err, exercise) {
       if (err) {
         res.send(err);
+      } else {
+
+        exercise.name = req.body.name;
+        exercise.problem = req.body.problem;
+        exercise.answer = req.body.answer;
+        exercise.user = req.body.user;
+        exercise.type = req.body.type;
+
+
+        console.log(JSON.stringify(exercise));
+
+        exercise.save();
+        res.send(exercise);
+          // res.json({ message: 'Exercise was updated'});
       }
-
-      exercise.name = req.body.name;
-      exercise.problem = req.body.problem;
-      exercise.answer = req.body.answer;
-      exercise.userAnswer = req.body.userAnswer;
-      exercise.user = req.body.user;
-      exercise.type = req.body.type;
-      exercise.exerciseNumber = req.body.exerciseNumber;
-
-      console.log(JSON.stringify(exercise));
-
-      exercise.save();
-      res.send(exercise);
-        // res.json({ message: 'Exercise was updated'});
     });
   });
 
