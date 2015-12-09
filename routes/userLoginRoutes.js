@@ -3,9 +3,22 @@ var User = require('../models/user');
 
 module.exports = function(app, passport) {
 
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect('/');
+  }
+
+  function isAdmin(req, res, next) {
+    if (req.isAuthenticated() && req.user.local.role === 'admin') {
+      return next();
+    }
+    res.redirect('/');
+  }
   app.get('/', function(req, res) {
     res.render('index.ejs', {
-      user  : req.user
+      user: req.user
     });
   });
 
@@ -46,7 +59,7 @@ module.exports = function(app, passport) {
 
   app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile.ejs', {
-      user: req.user 
+      user: req.user
     });
   });
 
@@ -56,7 +69,6 @@ module.exports = function(app, passport) {
     });
   });
 
-    
   app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
@@ -64,32 +76,15 @@ module.exports = function(app, passport) {
 
 
   app.get('/admin', isAdmin, function(req, res) {
-    mongoose.model('User').find({}, function(err, users){
-      if(err){
+    mongoose.model('User').find({}, function(err, users) {
+      if (err) {
         return console.log(err);
       } else {
         res.render('adminProfile.ejs', {
-          users : users,
-          user : req.user
+          users: users,
+          user: req.user
         });
       }
     });
   });
-
 };
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-      return next();
-  }
-    res.redirect('/');
-}
-
-
-function isAdmin(req, res, next) {
-  if(req.isAuthenticated() && req.user.local.role === 'admin')
-
-    return next();
-
-  res.redirect('/');
-}

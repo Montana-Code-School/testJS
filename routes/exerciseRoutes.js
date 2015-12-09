@@ -18,18 +18,18 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get('/api/user/exercises/', function(req, res) {
-    mongoose.model('User').findById({
-      _id: req.user._id
-    })
-    .populate('exercises').exec(function(err, exercise) {
-      if (err) {
-        return console.log('err');
-      } else {
-        res.json(exercise);
-      }
-    });
-  });
+  // app.get('/api/user/exercises/', function(req, res) {
+  //   mongoose.model('User').findById({
+  //     _id: req.user._id
+  //   })
+  //   .populate('exercises').exec(function(err, exercise) {
+  //     if (err) {
+  //       return console.log('err');
+  //     } else {
+  //       res.json(exercise);
+  //     }
+  //   });
+  // });
 
   app.post('/api/exercises/', function(req, res) {
 
@@ -39,7 +39,8 @@ module.exports = function(app, passport) {
     var answer = req.body.answer;
     var pass = req.body.pass;
     var user = req.body.user;
-    var exerciseNumber = req.body.exerciseNumber;
+    var next = null;
+    var prev = null;
 
     mongoose.model('Exercises').create({
       type: type,
@@ -48,7 +49,8 @@ module.exports = function(app, passport) {
       answer: answer,
       pass: false,
       user: req.user._id,
-      exerciseNumber: exerciseNumber
+      next: null,
+      prev: null
 
     }, function(err, exercises) {
       if (err) {

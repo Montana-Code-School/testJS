@@ -8,27 +8,36 @@ var UserExerciseData = React.createClass({
     data: React.PropTypes.array.isRequired
   },
 
-    render: function() {
-          var exercise = this.props.data.map(function(c) {
-            var result = c.pass === true ? 'pass': 'fail';
-            return (
-               <div key={c.id} className='well'>
-                 <table className='table'>
-                   <tr>{c.exercise}</tr>
-                     <td>{c.answer}</td>
-                     <td>Result: {result}</td>
-                 </table>
-               </div>
-            );
-          })
-
-          return (
-            <div>
-              {exercise}
-            </div>
-          );
-        }
+  render: function() {
+    var exercise = this.props.data.map(function(c) {
+      var result = c.pass === true ? 'pass' : 'fail';
+      return (
+        <div key={c._id} className="well">
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Exercise</th>
+                  <th>Answer</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{c.exercise}</td>
+                  <td>{c.answer}</td>
+                  <td>{result}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      );
     });
+    return (
+      <div>
+        {exercise}
+      </div>
+    );
+  }
+});
 
 module.exports = UserExerciseData;
-

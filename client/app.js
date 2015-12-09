@@ -27,39 +27,24 @@ var App = React.createClass({
     };
   },
 
-  // nextExercise(exercise) {
-  //   var data = {(exerciseNumber: exerciseNumber)}
-  //   $.ajax({
-  //     url: '/api/exercises/',
-  //     dataType: 'json',
-  //     cache: false,
-  //     data: data,
-  //     type: 'GET',
-  //     success: function(data) {
-  //       alert('Your answer is ');
-  //     },
-  //     error: function(xhr, status, err) {
-  //       console.log('broken url is ');
-  //       console.error(status, err.toString());
-  //     }
-  //   });
-  // },
+  getNextQuestion() {
+
+  },
+
+  getPrevQuestion() {
+
+  },
+
+  handleSubmit() {
+
+  },
 
   sendCodeToServer(code) {
 
-    // var indexPlusOne = 0;
-    // var exerciseDataLoop = this.props.data.map(function(exercise) {
-    //     for(var i=0; i <= exercise.length; i++) {
-    //       if(exercise.exerciseNumber == 1) {
-    //         return exercise.problem
-    //       }
-    //       console.log(indexPlusOne)
-    //       indexPlusOne++;
-    //     }
-    // });
-
     var answer = {answer: code};
-    var id = '5667b3cd2f8a65a3108ece66';
+
+    var id = '566756355203c87e2cf01502';
+
     $.ajax({
       url: '/api/answer/' + id,
       dataType: 'json',
@@ -113,10 +98,7 @@ var App = React.createClass({
          <div className="col-md-12">
            <Codemirror className="col-md-8" ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
          </div>
-         <div>
-           
-         </div>
-       </div>
+      </div>
        <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id='handleSubmit'> Submit </button>
        </div>
    );
