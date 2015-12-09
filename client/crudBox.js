@@ -36,7 +36,7 @@ var CrudBox = React.createClass({
   render: function() {
     return (
           <div>
-            <ExerciseList url='/api/exercises/' data={this.state.data}/>
+            <ExerciseList url="/api/exercises/" data={this.state.data}/>
           </div>
           );
   }
