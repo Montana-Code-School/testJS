@@ -9,7 +9,7 @@ require('codemirror/mode/markdown/markdown');
 
 var defaults = {
   markdown: '# Trevor rules',
-  javascript: 'var component = {\n\tname: "Trevor, Travis, Kelly and Ed rule",\n\tauthor: "Dave and Davis",\n\trepo: "https://github.com/Montana-Code-School/testJS"\n};'
+  javascript: 'Write Code Here'
 };
 
 var App = React.createClass({
@@ -59,7 +59,7 @@ var App = React.createClass({
     // });
 
     var answer = {answer: code};
-    var id = '56671e9b2b50a4fa249bec24';
+    var id = '5667b3cd2f8a65a3108ece66';
     $.ajax({
       url: '/api/answer/' + id,
       dataType: 'json',
@@ -114,10 +114,10 @@ var App = React.createClass({
            <Codemirror className="col-md-8" ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
          </div>
          <div>
-           <iframe className="col-md-4" src="" />
+           
          </div>
        </div>
-       <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default"> Submit </button>
+       <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id='handleSubmit'> Submit </button>
        </div>
    );
   }

@@ -8,3 +8,21 @@
   background: rgba(000, 000, 000, 0.8); 
   min-height:1000000px;
 }
+
+.navbar {
+  background-color: tomato;
+  margin-bottom: 0;
+}
+.navbar-brand{
+  font-size: 30px;
+}
+
+.jumbotron {
+  text-align: center;
+  margin-top: 0;
+  background-color: turquoise;
+}
+
+#hint-button {
+  width: 200px;
+}

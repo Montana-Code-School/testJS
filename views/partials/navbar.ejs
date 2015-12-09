@@ -4,11 +4,11 @@
   <div class="headerimage">
     <div class="container"> 
       <div class="header">
-        <a href="/" class="navbar-brand">Test JS</a>
+        <a href="/" class="navbar-brand"><strong>Test JS</strong></a>
           <ul class="nav navbar-nav navbar-right">
             <% if(!user) { %>
-                <li><a><button type='button' class='btn-menu' data-toggle='modal' data-target='#loginModal'>Login</button></a></li>
-                <li><a><button type='button' class='btn-menu' data-toggle='modal' data-target='#signupModal'>Sign Up</button></a></li>
+                <li><a><button type='button' class="btn btn-menu" data-toggle='modal' data-target='#loginModal'>Login</button></a></li>
+                <li><a><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#signupModal'>Sign Up</button></a></li>
                 <%} else if (user.local.role === 'admin') { %>
                     <li>
                       <a href="#" data-toggle="dropdown">About<span class="caret"></span></a>
