@@ -93,11 +93,11 @@ var App = React.createClass({
       <div>
         <div className="container">
           <div className="col-md-8">
-            <Codemirror  ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
+            <Codemirror ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
           </div>
         </div>
           <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handleSubmit"> Submit </button>
-          <button type='button' id='hint-button' className='btn btn-danger' data-toggle='popover' title='Hint' data-content='Heres a hint: '>Hint</button>
+          <button type="button" id="hint-button" className="btn btn-danger" data-toggle="popover" title="Hint" data-content="Heres a hint: ">Hint</button>
       </div>
     );
   }

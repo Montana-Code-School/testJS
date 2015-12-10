@@ -22,8 +22,7 @@ module.exports = function(app, passport) {
     });
   });
 
-    
-// LOGIN 
+// LOGIN
   app.get('/login', function(req, res) {
     res.render('login.ejs', { message: req.flash('loginMessage') });
   });
@@ -35,19 +34,19 @@ module.exports = function(app, passport) {
 
 // process the login form
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/profile', 
-    failureRedirect: '/login', 
+    successRedirect: '/profile',
+    failureRedirect: '/login',
   }));
-   
-// SIGNUP   
+
+// SIGNUP
   app.get('/signup', function(req, res) {
     res.render('signup.ejs', { message: req.flash('signupMessage') });
   });
 
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/', 
-    failureRedirect: '/signup', 
-    failureFlash: true 
+    successRedirect: '/',
+    failureRedirect: '/signup',
+    failureFlash: true
   }));
 
   app.get('/profile', isLoggedIn, function(req, res) {
@@ -56,13 +55,13 @@ module.exports = function(app, passport) {
     });
   });
 
-   app.get('/practice', isLoggedIn, function(req, res) {
+  app.get('/practice', isLoggedIn, function(req, res) {
     res.render('practice.ejs', {
       user: req.user
     });
   });
 
-//Admin Routes
+//  Admin Routes
   app.get('/post_exercise', isAdmin, function(req, res) {
     res.render('post_exercise.ejs', {
       user: req.user

@@ -74,8 +74,6 @@ var CodeMirror = React.createClass({
     this.props.onChange && this.props.onChange(newValue);
   },
 
-        
-
   render() {
     var editorClassName = className('ReactCodeMirror', this.state.isFocused ? 'ReactCodeMirror--focused' : null, this.props.className);
 
