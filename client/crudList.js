@@ -135,7 +135,7 @@ var CrudList = React.createClass({
         <div>
           {renderUpdateForm}
         </div>
-        <div className="col-md-4">
+        <div className="container">
           <div>
             <h1>{updateExerciseData}</h1>
           </div>

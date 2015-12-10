@@ -12,8 +12,8 @@ var ExerciseList = React.createClass({
 
     var exerciseData = this.props.data.map(function(exercise) {
       return (
-        <div key={exercise._id} className="well">
-          <div><h1>{exercise.name}</h1></div>
+        <div key={exercise._id} className="well exerciseBox">
+          <div className="exerciseName"><h1>{exercise.name}</h1></div>
           <div><h3> Solve this Problem: {exercise.problem}</h3></div>
         </div>
       );
