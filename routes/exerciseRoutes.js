@@ -162,54 +162,87 @@ app.post('/api/exercises/', function(req, res) {
 
   app.delete('/api/exercises/:id', function(req, res) {
     // var firstCase = exercise.length === 1;
-    // var secondCase = exercise.length === exercise.length - 1;
+    // var secondCase = find by index the final item in an array and delete it
+
+
     // var thirdCase = exercise[0];
     // var fourthCase = 
-  var type = req.body.type;
+    var type = req.body.type;
  
     mongoose.model('Exercises').find({
       type: type
     }, function(err, exercise){
       var firstCase = exercise.length === 1;
-      var secondCase = exercise.length === exercise.length - 1;
+      console.log(firstCase, "firstcase");
       if(err){
         res.send(err)
       } else {
 
         mongoose.model('Exercises').findById({
           _id: req.params.id,
-        }, function(err, exercise){
+        }, function(err, ex2Del){
           if(err){
             res.send(err);
           } else {
 
-           mongoose.model('Exercises').remove({
-            _id: req.params.id,
+            mongoose.model('Exercises').remove({
+              _id: req.params.id,
             }, function(err, exercise) {
               if (err) {
                 res.send(err);
               } else if(firstCase) {
-                res.send(exercise);
-              } else if(secondCase) {
-                exercise.update({
-                }, function(err, exercise) {
+                res.json({ message: 'Successfully Deleted Only Exercise of Type'});
+              } else if (ex2Del.next === null) {
+                mongoose.model('Exercises').findById({
+                  _id: ex2Del.prev
+                }, function(err, prevX){
                   if(err) {
                     res.send(err);
                   } else {
-                      {_id = req.params.prev},
-                    })
+                    prevX.next = null;
+                    prevX.save();
+                    res.json({ message: 'Successfully Deleted Last exercise of Type'});
                   }
                 })
-                res.send(exercise);
-              } 
-              res.json({ message: 'Successfully Deleted'});
+              } else if (ex2Del.prev === null) {
+                mongoose.model('Exercises').findById({
+                  _id: ex2Del.next
+                }, function(err, nextX){
+                  if(err) {
+                    res.send(err);
+                  } else {
+                    nextX.prev = null;
+                    nextX.save();
+                    res.json({ message: 'Successfully Deleted First Exercise of Type'});
+                  }
+                })
+              } else {
+                console.log(ex2Del.next, ex2Del.prev);
+                mongoose.model('Exercises').find({
+                  _id: { $in: [
+                    ex2Del.next,
+                    ex2Del.prev
+                    ]}
+                  }, function(err, middleX){
+                    if(err) {
+                      res.send("this is an: " + err);
+                    } else {
+                      var middleXprev = middleX[0].prev;
+                      middleX[0].prev = middleX[1].next;
+                      middleX[1].next = middleXprev;
+                      middleX[0].save();
+                      middleX[1].save();
+                      res.json({ message: 'Successfully Deleted Middle Exercise of Type'});
+                    }
+                  }
+                );
+              }
             });
-           }
-         })
-        }
-      })
+          }
+        });
+      }
+    })
+  });
 
-
-});
 
 };
