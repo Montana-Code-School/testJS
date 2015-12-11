@@ -31,36 +31,54 @@ module.exports = function(app, passport) {
   //   });
   // });
 
-  app.post('/api/exercises/', function(req, res) {
 
-    var type = req.body.type;
-    var name = req.body.name;
-    var problem = req.body.problem;
-    var answer = req.body.answer;
-    var pass = req.body.pass;
-    var user = req.body.user;
-    var next = null;
-    var prev = null;
+// two use cases
+//  1st cat, test for two exercise inside cat
+//  last cat
 
-    mongoose.model('Exercises').create({
-      type: type,
-      name: name,
-      problem: problem,
-      answer: answer,
-      pass: false,
-      user: req.user._id,
-      next: null,
-      prev: null
+app.post('/api/exercises/', function(req, res) {
 
-    }, function(err, exercises) {
-      if (err) {
-        res.send('houston we have a problem');
-      } else {
-        console.log('New exercise ' + exercises + ' created!');
-        res.send(exercises);
-      }
-    });
+  var type = req.body.type;
+  var name = req.body.name;
+  var problem = req.body.problem;
+  var answer = req.body.answer;
+  var pass = req.body.pass;
+  var user = req.body.user;
+  var next = null;
+  var prev = null;
+
+  mongoose.model('Exercises').find({
+    type: type,
+    next: null
+  }, function(err, exercise) {
+    var prevX = exercise.length === 0 ? null : exercise[0];
+    if (err) {
+      console.log(err);
+    } else{
+      mongoose.model('Exercises').create({
+        type: type,
+        name: name,
+        problem: problem,
+        answer: answer,
+        pass: false,
+        user: user || null,
+        next: null,
+        prev: prevX ? prevX._id : null
+      }, function(err, exercises) {
+        if (err) {
+          res.send('error posting an exercise: ' + err);
+        } else {
+          console.log('New exercise ' + exercises + ' created!' + prevX);
+          if (prevX) {
+            prevX.next = exercises._id;
+            prevX.save();
+          }
+          res.send(exercises);
+        }
+      });
+    }
   });
+});
 
 
   app.get('/api/exercises/:id', function(req, res) {
@@ -110,6 +128,10 @@ module.exports = function(app, passport) {
     });
   });
 
+
+
+
+
   app.put('/api/exercises/:id', function(req, res) {
     mongoose.model('Exercises').findById({
       _id: req.params.id}, function(err, exercise) {
@@ -133,15 +155,61 @@ module.exports = function(app, passport) {
     });
   });
 
+  //  Delete the only exercise in a type
+  //  Delete the last exercise in a type
+  //  Delete the first exercise in a type
+  //  Delete an exercise in the middle of a type
+
   app.delete('/api/exercises/:id', function(req, res) {
-    mongoose.model('Exercises').remove({
-      _id: req.params.id
-    }, function(err, exercise) {
-      if (err) {
-        res.send(err);
-      }
-      res.json({ message: 'Successfully Deleted'});
-    });
-  });
+    // var firstCase = exercise.length === 1;
+    // var secondCase = exercise.length === exercise.length - 1;
+    // var thirdCase = exercise[0];
+    // var fourthCase = 
+  var type = req.body.type;
+ 
+    mongoose.model('Exercises').find({
+      type: type
+    }, function(err, exercise){
+      var firstCase = exercise.length === 1;
+      var secondCase = exercise.length === exercise.length - 1;
+      if(err){
+        res.send(err)
+      } else {
+
+        mongoose.model('Exercises').findById({
+          _id: req.params.id,
+        }, function(err, exercise){
+          if(err){
+            res.send(err);
+          } else {
+
+           mongoose.model('Exercises').remove({
+            _id: req.params.id,
+            }, function(err, exercise) {
+              if (err) {
+                res.send(err);
+              } else if(firstCase) {
+                res.send(exercise);
+              } else if(secondCase) {
+                exercise.update({
+                }, function(err, exercise) {
+                  if(err) {
+                    res.send(err);
+                  } else {
+                      {_id = req.params.prev},
+                    })
+                  }
+                })
+                res.send(exercise);
+              } 
+              res.json({ message: 'Successfully Deleted'});
+            });
+           }
+         })
+        }
+      })
+
+
+});
 
 };

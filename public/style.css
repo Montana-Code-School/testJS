@@ -1,6 +1,4 @@
-#home-title {
-	text-align: center;
-}
+
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -21,7 +19,7 @@
 }
 
 .navbar {
-  background-color: tomato;
+  background-color: black;
   margin-bottom: 0;
 }
 .navbar-brand{
@@ -36,4 +34,13 @@
 
 #hint-button {
   margin: 10px;
+}
+#myCanvas {
+  z-index: 1000;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#title-body {
+  background: black;
 }

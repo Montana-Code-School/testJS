@@ -36,7 +36,7 @@ function drawAllToCanvas () {
           function drawLine (myLine, ctx) {
            
             ctx.beginPath();
-            ctx.moveTo((start.x + r), start.y);
+            ctx.moveTo((start.x + r), c.width);
             ctx.rect(myLine.x, myLine.y, myLine.width, myLine.height);
             ctx.lineWidth = myLine.borderWidth;
             ctx.stroke();
