@@ -1,6 +1,18 @@
 body {
   background-color: black;
 }
+.panel {
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 70%;
+}
+.panel-body h5 {
+  text-decoration: underline;
+}
+.panel-body p {
+  text-indent: 50pxß;
+}
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -33,7 +45,9 @@ body {
   margin-top: 0;
   background-color: turquoise;
 }
-
+#instructionNav {
+  float: right;
+}
 #hint-button {
   margin: 10px;
 }

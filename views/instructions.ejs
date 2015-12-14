@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+    <head>
+
+        <title>Instructions</title>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> 
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+
+    <body id="inHome">
+        <% include ./partials/navbar.ejs %>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Instructions and Basic Style</h3>
+                </div>
+                <div class="panel-body">
+                    <p></p>
+                    <p>The AirBnb style guidelines define some of the more rigorous definitions of style. Want to skip the abridged version? <a href="https://github.com/airbnb/javascript">Go straight to the source!</a></p></br>
+
+
+                    <div id="spacing" class="well">
+                        <% include ./partials/instructionDropdown.ejs %>
+                        <h5>Spacing</h5>
+                        </br>
+                        <p>Spacing is super important.  It makes your code readable, repeatable and glorious.  Spacing follows some basic patterns. Below are examples of "good" (two spaces) and "bad" spacing, where * indicates a space.   </p>
+                        <div class="well codeEx">
+                            <code>
+                                // bad: four spaces </br>
+                                function () {</br>
+                                ****var name; </br>
+                                }
+                                </br>
+                                </br>
+                                // bad: one space </br>
+                                function () {</br>
+                                *var name; </br>
+                                }
+                                </br>
+                                </br>
+                                // good! Your code doesn't fail! </br>
+                                function () {</br>
+                                **var name; </br>
+                                }
+                                </br>
+                            </code>
+                        </div>
+                        
+                    </div>
+
+                    <div class="well">
+                        <% include ./partials/instructionDropdown.ejs %>
+                        <h5>Semicolons and Commas</h5></br>
+                        <p>Ah, semicolons. You will get to know them well. Semicolons are like the period at the end of a sentence: they tell the compiler when you're finished executing a process. Likewise, commas indicate to the compiler that certain things go together.  Observe: </p>
+                        <div id="semicolons" class="well codeEx">
+                        <h5>Semicolons:</h5></br>
+                            <code>
+                                // bad: no semicolons at the end of these lines will break your code </br>
+                                function sayName = () {</br>
+                                &nbsp var name = "Ed" </br>
+                                &nbsp return name </br>
+                                } </br>
+                                sayName()
+                                </br>
+                                </br>
+                                // good: notice the semicolons at the end of the lines </br>
+                                function sayName = () {</br>
+                                &nbsp var name = "Ed"; </br>
+                                &nbsp return name; </br>
+                                } </br>
+                                sayName();
+                                </br>
+                            </code>
+                        </div>
+                        <div id="commas" class="well codeEx">
+                        <% include ./partials/instructionDropdown.ejs %>
+                        <h5>Commas:</h5></br>
+                            <code>
+                                // bad </br>
+                                var hero = {</br>
+                                &nbsp firstName: 'Ada' // no comma at end of the line</br>
+                                &nbsp lastName: ',Lovelace' // comma in a weird random spot</br>
+                                &nbsp ,birthYear: 1815 // comma before key value</br> 
+                                &nbsp super,Power: 'computers' // Really? </br> 
+                                }
+                                </br>
+                                </br>
+                                // good </br>
+                                var hero = {</br>
+                                &nbsp firstName: 'Ada', </br>
+                                &nbsp lastName: 'Lovelace', </br>
+                                &nbsp birthYear: 1815, </br>
+                                &nbsp superPower: 'computers',</br>
+                                }
+                                </br>
+                            </code>  
+                        </div> 
+                    </div>
+
+                    <div id="comparison" class="well">
+                        <% include ./partials/instructionDropdown.ejs %>
+                        <h5>Comparison Operators</h5>
+                        </br>
+                        <p>There are two different ways to compare an element in Javascript.  The first way is to use "==" which is reccomended in only about 4 percent of cases.  The other way is "===" which is awesome.</p>
+                    
+                        <div class="well codeEx">
+                            <code>
+                                '1' == 1   // true</br>
+                                &nbsp// with the evil twins in place the number is </br>
+                                &nbsp// evaulated to a string. </br>
+                                </br>
+                                '1' === 1   // false</br>
+                                &nbsp// with the triplets ruling the roost the number </br>
+                                &nbsp// is compared by value (1) and type (string/ </br>
+                                &nbsp// integer) </br>
+                                </br>
+                            </code>
+                        </div>
+                    </div>
+
+                    <div id="block" class="well">
+                        <% include ./partials/instructionDropdown.ejs %>
+                        <h5>Code Blocks</h5></br>
+                        <p>Code blocks exists within the curly braces.  They represent the entirety of the code that will be called during a single iteration of a function or method.</p>
+                        <div class="well codeEx">
+                            <code>
+                                // bad </br>
+                                &nbsp if (failTest) </br>
+                                &nbsp &nbsp return false; </br>
+                                </br>
+                                // good </br>
+                                &nbsp if (failTest) {</br>
+                                &nbsp &nbsp return false; </br>
+                                }
+                                </br>
+                            </code>
+                        </div>
+                    </div>
+                    
+                    <div id="case" class="well">
+                        <% include ./partials/instructionDropdown.ejs %>
+                        <h5>camelCase Versus Dash Notation</h5>
+                        <p>There are two ways to make spaceless phrases readable.  The first and preferable way is to capitalize the second word in the phrase, called camel case because it creates a hump in the middle of the phrase.  The second way is to use a dash.</p>
+                        <div class="well codeEx">
+                            <code>
+                                // camelCase </br>
+                                &nbsp var thereWasThisPerson = 0; </br>
+                                </br>
+                                // dash-notation </br>
+                                &nbsp var there-was-this-person = 0; </br>
+                                </br>
+                                // don't use these!!! </br>
+                                // underscore </br>
+                                &nbsp var there_was_this_person = 0; </br>
+                                </br>
+                                // non descriptive naming </br>
+                                &nbsp var q = 0; </br>
+                                </br>
+                                // difficult to remember/type </br>
+                                &nbsp var OBjEct5134 = 0; </br>
+                                </br>
+                            </code>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+            <div id="profile" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">What is your profile page?</h3>
+                </div>
+                <div class="panel-body">
+                <% include ./partials/instructionDropdown.ejs %>
+                    Your profile page will give you an overview of your progress, badges and an personal information you would like to have available on the page
+                </div>
+            </div>
+
+            <div id="linter" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Linter?  What is a linter?</h3>
+                </div>
+                <div class="panel-body">
+                <% include ./partials/instructionDropdown.ejs %>
+                    Basically, a linter evaluates your code and provides warnings and/or errors accordingly.  The linter you'll have on this site evaluates spacing, semicolon use and comma use.  The linter in the exercise code box will give you information as to what you are missing when you type your answer.
+                </div>
+            </div>     
+        </div>
+            
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/1.1.1/js/md5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+
+
+    </body>
+</html>

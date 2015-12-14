@@ -14,7 +14,7 @@ module.exports = function(app, passport) {
     if (req.isAuthenticated() && req.user.local.role === 'admin') {
       return next();
     }
-    res.redirect('/practice.ejs');
+    res.redirect('/profile.ejs');
   }
   app.get('/', function(req, res) {
     res.render('index.ejs', {
@@ -57,6 +57,18 @@ module.exports = function(app, passport) {
 
   app.get('/practice', isLoggedIn, function(req, res) {
     res.render('practice.ejs', {
+      user: req.user
+    });
+  });
+
+  app.get('/instructions', isLoggedIn, function(req, res) {
+    res.render('instructions.ejs', {
+      user: req.user
+    });
+  });
+
+  app.get('/team', isLoggedIn, function(req, res) {
+    res.render('team.ejs', {
       user: req.user
     });
   });
