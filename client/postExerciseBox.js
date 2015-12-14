@@ -52,10 +52,18 @@ var ExerciseBox = React.createClass({
               <label>Exercise Name</label>
               <textarea rows="1" type="text" className="form-control" ref="name" placeholder="Exercise Name" />
             </div>
-            <div className="form-group">
-              <label>Exercise Category</label>
-              <textarea rows="1" type="text" ref="type" className="form-control" placeholder="Exercise Type" />
-            </div>
+            <fieldset className="form-group">
+              <label htmlFor="Exercise Type">Example select</label><br></br>
+              <span className="text-muted">
+                Select the appropriate type of problem from the following options
+              </span>
+              <select className="form-control" id="exercise-type" ref="type">
+                <option>Arrays</option>
+                <option>Variables</option>
+                <option>Functions</option>
+                <option>Strings</option>
+              </select>
+            </fieldset>
             <div className="form-group">
               <label>Exercise Problem</label>
               <textarea rows="10" type="text" className="form-control" ref="problem" placeholder="Exercise Problem" />

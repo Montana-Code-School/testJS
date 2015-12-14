@@ -46,6 +46,7 @@
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "kerberos": "0.0.17",
+    "md5": "^2.0.0",
     "method-override": "^2.3.5",
     "mongo": "^0.1.0",
     "mongo-uri": "^0.1.2",

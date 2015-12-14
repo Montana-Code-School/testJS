@@ -4,83 +4,82 @@
   <div class="headerimage">
     <div class="container"> 
       <div class="header">
-        <a href="/" class="navbar-brand"><strong>Test JS</strong></a>
+        <a href="/" class="navbar-brand"><strong>Learn JS</strong></a>
           <ul class="nav navbar-nav navbar-right">
             <% if(!user) { %>
-                <li><a><button type='button' class="btn btn-menu" data-toggle='modal' data-target='#loginModal'>Login</button></a></li>
-                <li><a><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#signupModal'>Sign Up</button></a></li>
-                <%} else if (user.local.role === 'admin') { %>
-                    <li>
-                      <a href="#" data-toggle="dropdown">About<span class="caret"></span></a>
+              <li><a><button type='button' class="btn btn-menu" data-toggle='modal' data-target='#loginModal'>Login</button></a></li>
+              <li><a><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#signupModal'>Sign Up</button></a></li>
 
-                      <ul class="dropdown-menu">
-                        <li><a href="/about">My Story</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                      </ul>
-                    
-                    <li><a href="/profile">My Profile</a></li>
-                    </li>
+            <!-- Admin navbar -->
+            <%} else if (user.local.role === 'admin') { %>
+                <li>
+                  <a href="#" data-toggle="dropdown">About<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/about">My Story</a></li>
+                      <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </li>
 
-                    <li>
-                   
-                    <a href="#" data-toggle="dropdown">Instructor Menu<span class="caret"></span></a>
+                <li>
+                  <a href="#" data-toggle="dropdown">Instructor Menu<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/login">Log In</a></li>
+                        <li><a href="/signup">Sign Up</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="/post_exercise">Post Exercise</a></li>
+                        <li><a href="/logout">Log Out</a></li>
+                    </ul>
+                </li>
 
-                      <ul class="dropdown-menu">
-                          <li><a href="/login">Log In</a></li>
-                          <li><a href="/signup">Sign Up</a></li>
-                          <li><a href="/profile">Profile</a></li>
-                          <li><a href="/post_exercise">Post Exercise</a></li>
-                          <li><a href="/logout">Log Out</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                    <a href="#" data-toggle="dropdown">Exercises <span class="caret"></span></a>
+                <li>
+                  <a href="#" data-toggle="dropdown">Exercises <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/arrays">Arrays</a></li>
+                        <li><a href="/variables">Variables</a></li>
+                        <li><a href="/functions">Functions</a></li>
+                        <li><a href="/strings">Strings</a></li>
+                    </ul>
+                </li>
+                <li>
+                  <a href="/profile" id="local-image">My Profile</a>
+                </li>
 
-                      <ul class="dropdown-menu">
-                          <li><a href="/arrays">Arrays</a></li>
-                          <li><a href="/variables">Variables</a></li>
-                          <li><a href="/functions">Functions</a></li>
-                          <li><a href="/strings">Strings</a></li>
-                      </ul>
+              <!-- Guest navbar -->
+              <% } else { %>
+                <li>
+                  <a href="#" data-toggle="dropdown">About<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/about">My Story</a></li>
+                      <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </li>
 
-                    </li>
-                  <% } else { %>
-                     <li>
-                      <a href="#" data-toggle="dropdown">About<span class="caret"></span></a>
+                <li>
+                  <a href="#" data-toggle="dropdown">Student Menu<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/login">Log In</a></li>
+                      <li><a href="/signup">Sign Up</a></li>
+                      <li><a href="/profile">Profile</a></li>
+                      <li><a href="/logout">Log Out</a></li>
+                    </ul>
+                </li>
 
-                      <ul class="dropdown-menu">
-                        <li><a href="/about">My Story</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                      </ul>
-                    
-                    <li><a href="/profile">My Profile</a></li>
-                    </li>
+                <li>
+                  <a href="#" data-toggle="dropdown">Exercises <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/practice">Start</a></li>
+                        <li><a href="/arrays">Arrays</a></li>
+                        <li><a href="/variables">Variables</a></li>
+                        <li><a href="/functions">Functions</a></li>
+                        <li><a href="/strings">Strings</a></li>
+                    </ul>
+                </li>
 
-                    <li>
-                   
-                    <a href="#" data-toggle="dropdown">Student Menu<span class="caret"></span></a>
-
-                      <ul class="dropdown-menu">
-                          <li><a href="/login">Log In</a></li>
-                          <li><a href="/signup">Sign Up</a></li>
-                          <li><a href="/profile">Profile</a></li>
-                          <li><a href="/logout">Log Out</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                    <a href="#" data-toggle="dropdown">Exercises <span class="caret"></span></a>
-
-                      <ul class="dropdown-menu">
-                          <li><a href="/practice">Start</a></li>
-                          <li><a href="/arrays">Arrays</a></li>
-                          <li><a href="/variables">Variables</a></li>
-                          <li><a href="/functions">Functions</a></li>
-                          <li><a href="/strings">Strings</a></li>
-                      </ul>
-
-                    </li>
-                    <% } %>
-      </ul>
+                <li>
+                  <a href="/profile" id="local-image">My Profile</a>
+                </li>
+                <% } %>
+          </ul>
 
         <div data-backdrop="false" class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" align="left">
           <div class="modal-dialog" role="document">

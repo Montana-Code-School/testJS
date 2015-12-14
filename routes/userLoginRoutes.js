@@ -34,7 +34,7 @@ module.exports = function(app, passport) {
 
 // process the login form
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/profile',
+    successRedirect: '/practice',
     failureRedirect: '/login',
   }));
 
@@ -67,6 +67,36 @@ module.exports = function(app, passport) {
       user: req.user
     });
   });
+
+  app.get('/api/users/', function(req, res) {
+    mongoose.model('User').find({}, function(err, user) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(user);
+    });
+  });
+
+  app.delete('/api/users/:id', isAdmin, function(req, res) {
+    mongoose.model('User').findById({
+      _id: req.params.id,
+    }, function(err, user) {
+      if (err) {
+        res.send(err);
+      } else {
+        mongoose.model('User').remove({
+          _id: req.params.id,
+        }, function(err, user) {
+          if (err) {
+            res.send(err);
+          } else {
+            res.json({ message: 'User ' + user.email + ' deleted.'});
+          }
+        })
+      }
+    });
+  });
+
 
   app.get('/admin', isAdmin, function(req, res) {
     mongoose.model('User').find({}, function(err, users) {

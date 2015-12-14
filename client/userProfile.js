@@ -12,7 +12,6 @@ var UserProfile = React.createClass({
   },
 
   componentDidMount: function() {
-    console.log('mounted');
     this.loadAnswersFromServer();
   },
 

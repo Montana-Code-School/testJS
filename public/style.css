@@ -1,5 +1,5 @@
-#home-title {
-	text-align: center;
+body {
+  background-color: black;
 }
 .container {
   margin-left: auto;
@@ -36,4 +36,12 @@
 
 #hint-button {
   margin: 10px;
+}
+#home-title {
+  text-align: center;
+}
+#jslogo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

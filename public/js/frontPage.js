@@ -18,18 +18,18 @@ function drawAllToCanvas () {
         var myLine = {
           x: c.width / 4,
           y: c.height / 2,
-          width: 10,
+          width: 30,
           height: 2,
           borderWidth: 2
         }
         
 
         ctx.lineWidth = 4;
-        ctx.strokeStyle = 'red';
+        ctx.strokeStyle = 'tomato';
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 0;
         ctx.shadowBlur = 10;
-        ctx.shadowColor = 'gray';
+        ctx.shadowColor = 'silver';
 
         function drawLineAcross () {
 
@@ -46,7 +46,7 @@ function drawAllToCanvas () {
           function animate(myline, c, ctx, startTime) {
 
             var time = (new Date()).getTime() - startTime;
-            var linearSpeed = 300;
+            var linearSpeed = 1000;
             var newX = linearSpeed * time / 1000;
               if(newX < c.width - myLine.width - myLine.borderWidth / 2) {
                 myLine.x = newX;
@@ -65,7 +65,7 @@ function drawAllToCanvas () {
             setTimeout(function() {
             var startTime = (new Date()).getTime();
             animate(myLine, c, ctx, startTime);
-            }, 1000);
+            }, 5);
         }
 
         function drawCircle () {
@@ -82,9 +82,19 @@ function drawAllToCanvas () {
               cur++;
               if (cur < end) {
                 requestAnimFrame(function () {
-                animate(cur / 180)
+                animate(cur / 90)
                 });
               } else {
+                
+                drawLogo();
+
+                  function drawLogo() {
+                    logo = new Image();
+                    logo.src = 'imgs/learnJS.png';
+                    logo.onload = function(){
+                      ctx.drawImage(logo, 280, 80);
+                    }
+                  }
                 drawLineAcross();
               }
           }

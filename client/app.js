@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Codemirror = require('./Codemirror');
 var Exercises = require('./exercises');
+var UserGrav = require('./userGrav');
 
 require('codemirror/addon/lint/lint.js');
 require('codemirror/addon/lint/javascript-lint.js');
@@ -104,3 +105,4 @@ var App = React.createClass({
 });
 
 ReactDOM.render(<App url="/api/exercises/"/>, document.getElementById('my-app'));
+ReactDOM.render(<UserGrav url="/api/users/"/>, document.getElementById('local-image'));
