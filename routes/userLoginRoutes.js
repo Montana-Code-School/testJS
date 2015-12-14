@@ -86,13 +86,13 @@ module.exports = function(app, passport) {
       } else {
         mongoose.model('User').remove({
           _id: req.params.id,
-        }, function(err, user) {
-          if (err) {
-            res.send(err);
+        }, function(err2Del, user2Del) {
+          if (err2Del) {
+            res.send(err2Del);
           } else {
-            res.json({ message: 'User ' + user.email + ' deleted.'});
+            res.json({ message: 'User ' + user2Del.email + ' deleted.'});
           }
-        })
+        });
       }
     });
   });

@@ -58,7 +58,6 @@ var App = React.createClass({
         alert('Your answer is ');
       },
       error: function(xhr, status, err) {
-        console.log('broken url is ');
         console.error(status, err.toString());
       }
     });
