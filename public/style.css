@@ -1,3 +1,7 @@
+code {
+  color: #1DC116;
+  background-color: #314D67;
+}
 body {
   background-color: black;
 }
@@ -7,7 +11,7 @@ body {
   margin-right: auto;
   max-width: 70%;
 }
-.panel-body h5 {
+.panel-body h4 {
   text-decoration: underline;
 }
 .panel-body p {
@@ -44,6 +48,16 @@ body {
   text-align: center;
   margin-top: 0;
   background-color: turquoise;
+}
+.instruct {
+  border-color: black;
+}
+.codeEx {
+  max-width: 70%;
+  margin: 0 auto;
+  border-color: black;
+  border-width: 3px;
+  background-color: #314D67;
 }
 #instructionNav {
   float: right;
