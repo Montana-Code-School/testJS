@@ -7,9 +7,15 @@ var Answer = require('../models/answers');
 
 module.exports = function(app, passport) {
 
+
+
+  
+
   app.get('/api/exercises/', function(req, res) {
     mongoose.model('Exercises').find({})
-    .populate('Users').exec(function(err, exercise) {
+    .populate('Users')
+    .populate('userAnswer')
+    .exec(function(err, exercise) {
       if (err) {
         return console.log('err');
       } else {
@@ -38,7 +44,7 @@ module.exports = function(app, passport) {
     var problem = req.body.problem;
     var answer = req.body.answer;
     var pass = req.body.pass;
-    var user = req.body.user;
+    // var user = req.body.user;
     var next = null;
     var prev = null;
 
@@ -56,7 +62,7 @@ module.exports = function(app, passport) {
           problem: problem,
           answer: answer,
           pass: false,
-          user: user || null,
+          // user: user || null,
           next: null,
           prev: prevX ? prevX._id : null
         }, function(err2create, exercises) {
@@ -76,26 +82,105 @@ module.exports = function(app, passport) {
   });
 
 
+// we need to get the answer based on the user
+// use case
+// get all
+//     wehn these are retrieved you need to find that last path and sort by
+//     date, need to add date field.  date.now
+// get a single answer
+
+// get types
+
+  // app.get('/api/userAnswers/:id/:type', function(req,res) {
+  //   mongoose.model('Answer').find({
+  //     user: req.params.id,
+  //     exercise: { type: req.params.type }
+  //   }, function(err, answer) {
+  //     if (err) {
+  //       res.send(err);
+  //     } else {
+  //       res.json(answer);
+  //     }
+  //   });
+  // });
+
   app.get('/api/exercises/:id', function(req, res) {
     mongoose.model('Exercises').findById({
       _id: req.params.id
     }, function(err, exercise) {
       if (err) {
         res.send(err);
+      } else {
+        res.json(exercise);
       }
-      res.json(exercise);
     });
   });
 
   app.get('/api/answer/', function(req, res) {
-    mongoose.model('Answer').find({}, function(err, answer) {
-      if (err) {
-        res.send(err);
-      } else {
-        res.json(answer);
-      }
-    });
+    mongoose.model('Answer').find({})
+      .populate('exercise')
+      .exec(function(err, answer) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.json(answer);
+        }
+      });
   });
+
+var validExercises = [];
+
+  app.get('/api/user/exercises/', function(req, res) {
+    mongoose.model('Exercises').find({})
+    .populate('Users')
+    .populate('userAnswer')
+    .exec(function(err, exercise) {  
+      if (err) {
+        return console.log('err');
+      } else {
+        var uId = req.user._id;
+
+          var filterFunction = function (data) {
+
+            function userAnswerArray (datadata) {
+              if(datadata.userAnswer.length > 0) {
+                var userAnswers = datadata.userAnswer;
+                return filterByUser(userAnswers);
+              }
+            };
+
+          data.forEach(userAnswerArray);
+
+          function filterByUser(answers) {
+                for(var i = 0; i < answers.length; i++) {
+                  if(answers[i].pass === true && answers[i].user.toString() == uId.toString()) { 
+                    validExercises.push(answers[i]);
+                  }  
+                }
+              };
+            return validExercises;
+          }
+          var hello = filterFunction(exercise);
+          res.json(hello);
+        };
+    });  // exec
+  });  //  app.get
+
+  app.get('/api/user/answer/', function(req, res){
+    mongoose.model('Answer').find({
+      user: req.user._id
+    })
+      .populate('exercise')
+      .exec(function(err, answer) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.json(answer);
+        }
+      });
+  });
+
+
 
   app.post('/api/answer/:id', function(req, res) {
 
@@ -111,10 +196,13 @@ module.exports = function(app, passport) {
           answer: req.body.answer,
           pass: itPasses,
           user: req.user._id
-        }, function(answer) {
-          if (err) {
-            res.send(err);
+        }, function(errAns, answer) {
+          if (errAns) {
+            res.send(errAns);
           } else {
+            exercise.userAnswer.push(answer);
+            console.log('Answer', exercise.userAnswer)
+            exercise.save();
             res.json(answer);
           }
         });
