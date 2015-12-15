@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Codemirror = require('./Codemirror');
-var Exercises = require('./exercises');
 var UserGrav = require('./userGrav');
+var Exercises = require('./ExerciseList');
 
 require('codemirror/addon/lint/lint.js');
 require('codemirror/addon/lint/javascript-lint.js');
@@ -46,11 +46,11 @@ var App = React.createClass({
 
     var answer = {answer: code};
 
-    var id = '567078c986401c8499c26888';
+    var id = '56709d0e31e15066ac69788b';
     
 
     $.ajax({
-      url: '/api/answer/' + id,
+      url: this.props.url + id,
       dataType: 'json',
       cache: false,
       data: answer,
@@ -104,5 +104,6 @@ var App = React.createClass({
   }
 });
 
-ReactDOM.render(<App url="/api/exercises/"/>, document.getElementById('my-app'));
-ReactDOM.render(<UserGrav url="/api/users/"/>, document.getElementById('local-image'));
+ReactDOM.render(<App url="/api/answer/" />, document.getElementById('my-app'));
+ReactDOM.render(<Exercises url="/api/user/exercises/"/>, document.getElementById('exerciseBox'));
+// ReactDOM.render(<UserGrav url="/api/users/"/>, document.getElementById('local-image'));

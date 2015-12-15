@@ -8,9 +8,6 @@ var Answer = require('../models/answers');
 module.exports = function(app, passport) {
 
 
-
-  
-
   app.get('/api/exercises/', function(req, res) {
     mongoose.model('Exercises').find({})
     .populate('Users')
@@ -134,32 +131,32 @@ var validExercises = [];
     mongoose.model('Exercises').find({})
     .populate('Users')
     .populate('userAnswer')
+    .populate({path:'userAnswer', populate: {path: 'exercise'}})
     .exec(function(err, exercise) {  
       if (err) {
         return console.log('err');
       } else {
         var uId = req.user._id;
+        var filterFunction = function (data) {
 
-          var filterFunction = function (data) {
+          function userAnswerArray (datadata) {
+            if(datadata.userAnswer.length > 0) {
+              var userAnswers = datadata.userAnswer;
+              return filterByUser(userAnswers);
+            }
+          };
 
-            function userAnswerArray (datadata) {
-              if(datadata.userAnswer.length > 0) {
-                var userAnswers = datadata.userAnswer;
-                return filterByUser(userAnswers);
+        data.forEach(userAnswerArray);
+
+        function filterByUser(answers) {
+              for(var i = 0; i < answers.length; i++) {
+                if(answers[i].pass === false && answers[i].user.toString() == uId.toString()) { 
+                  validExercises.push(answers[i]);
+                }  
               }
             };
-
-          data.forEach(userAnswerArray);
-
-          function filterByUser(answers) {
-                for(var i = 0; i < answers.length; i++) {
-                  if(answers[i].pass === true && answers[i].user.toString() == uId.toString()) { 
-                    validExercises.push(answers[i]);
-                  }  
-                }
-              };
             return validExercises;
-          }
+        }
           var hello = filterFunction(exercise);
           res.json(hello);
         };
@@ -179,8 +176,6 @@ var validExercises = [];
         }
       });
   });
-
-
 
   app.post('/api/answer/:id', function(req, res) {
 

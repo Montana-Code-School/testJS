@@ -19,11 +19,11 @@ var Exercises = React.createClass({
   loadExercises: function(exercise) {
 
     $.ajax({
-      url: this.props.url,
+      url: '/api/user/exercises/',
       dataType: 'json',
       cache: false,
       success: function(data) {
-        console.log('Loaded answers from server');
+        console.log('Loaded exercises from server');
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -36,10 +36,11 @@ var Exercises = React.createClass({
   render: function() {
     return (
       <div>
-        <ExerciseList url={this.props.url} data={this.state.data}/>
+        <ExerciseList url="/api/user/exercises/" data={this.state.data}/>
       </div>
     );
   }
 });
-ReactDOM.render(<Exercises url="/api/exercises/"/>, document.getElementById('exerciseBox'));
-//  module.exports = Exercises;
+//ReactDOM.render(<Exercises url="/api/user/exercises/"/>, document.getElementById('exerciseBox'));
+
+module.exports = Exercises;
