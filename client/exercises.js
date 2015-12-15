@@ -23,7 +23,7 @@ var Exercises = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        console.log('inside success');
+        console.log('Loaded answers from server');
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -35,10 +35,10 @@ var Exercises = React.createClass({
 
   render: function() {
     return (
-          <div>
-          <ExerciseList url={this.props.url} data={this.state.data}/>
-          </div>
-          );
+      <div>
+        <ExerciseList url={this.props.url} data={this.state.data}/>
+      </div>
+    );
   }
 });
 ReactDOM.render(<Exercises url="/api/exercises/"/>, document.getElementById('exerciseBox'));
