@@ -79,7 +79,11 @@ var App = React.createClass({
   },
 
   getPrevQuestion() {
+    var prevExercise = this.state.exercises.filter(e => e._id === this.state.currentExercise.prev);
 
+    this.setState({
+      currentExercise: prevExercise ? prevExercise[0] : null 
+    });
   },
 
   sendCodeToServer(code, exerciseId) {
@@ -138,7 +142,7 @@ var App = React.createClass({
             <Codemirror ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
           </div>
         </div>
-          <button onClick={this.getPrevQuestion.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handlePrev" disabled> Previous </button>
+          <button onClick={this.getPrevQuestion.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handlePrev"> Previous </button>
           <button onClick={this.sendCodeToServer.bind(this, this.state.code, this.state.exerciseId)} type="submit" className="btn btn-default" id="handleSubmit"> Submit </button>
           <button type="button" id="hint-button" className="btn btn-danger" data-toggle="popover" title="Hint" data-content="Heres a hint: ">Hint</button>
           <button onClick={this.getNextQuestion} type="submit" className="btn btn-default" id="handleNext"> Next </button>
