@@ -5,16 +5,25 @@ var Exercises = require('./exercises')
 var ExerciseList = React.createClass({
 
   propTypes: {
-    data: React.PropTypes.object
+    data: React.PropTypes.array.isRequired
   },
 
   render: function() {
+    console.log(this.props.data);
+    var exercises = this.props.data.map(function(exercise){
+      console.log(exercise.prev);
+      return exercise.prev === null;
+    })
     return(
       <div>
-        {this.props.data ? this.props.data.problem : ''}
+        {exercises[0].problem}
       </div>
       );
-    }
-  });
+  }
+});
 
 module.exports = ExerciseList;
+
+
+
+
