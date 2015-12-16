@@ -16,7 +16,7 @@ var ExerciseBox = React.createClass({
     var answer = ReactDOM.findDOMNode(this.refs.answer).value.trim();
 
 
-    if (!problem) {
+    if (!problem || !answer || !type || !name) {
       return;
     }
 

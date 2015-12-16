@@ -37,18 +37,16 @@ var App = React.createClass({
   },
 
   managingExerciseState: function(){
-    console.log(this.state.exercises, "Mounting the Exercises")
     var exerciseList = this.state.exercises.filter(function(exercise){
-          return exercise.prev === null
-        })
-        console.log(exerciseList)
-        if(exerciseList.length !== 0){
-          //this.updateExerciseId(exerciseList[0]._id);
-          this.setState({
-            currentExercise: exerciseList[0]
-          })
-          console.log(exerciseList)
-        }
+      return exercise.prev === null
+    })
+    if(exerciseList.length !== 0){
+      //this.updateExerciseId(exerciseList[0]._id);
+      this.setState({
+        currentExercise: exerciseList[0]
+      })
+      console.log(exerciseList)
+    }
   },
 
   loadExercises: function() {
@@ -86,13 +84,10 @@ var App = React.createClass({
     });
   },
 
-  sendCodeToServer(code, exerciseId) {
-    console.log(exerciseId)
+  sendCodeToServer(code) {
 
     var answer = {answer: code};
-
-    var exerciseId = '56709d0e31e15066ac69788b';
-
+    var exerciseId = this.state.currentExercise._id;
     $.ajax({
       url: this.props.url + exerciseId,
       dataType: 'json',
@@ -134,6 +129,8 @@ var App = React.createClass({
       gutters: ['CodeMirror-lint-markers'],
       lint: true,
     };
+    var disPrev = this.state.currentExercise ? (this.state.currentExercise.prev ? false : true) : true;
+    var disNext = this.state.currentExercise ? (this.state.currentExercise.next ? false : true) : true;
     return (
       <div>
         <Exercises data={this.state.currentExercise}  />
@@ -142,10 +139,10 @@ var App = React.createClass({
             <Codemirror ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
           </div>
         </div>
-          <button onClick={this.getPrevQuestion.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handlePrev"> Previous </button>
-          <button onClick={this.sendCodeToServer.bind(this, this.state.code, this.state.exerciseId)} type="submit" className="btn btn-default" id="handleSubmit"> Submit </button>
+          <button onClick={this.getPrevQuestion.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handlePrev" disabled={disPrev} > Previous </button>
+          <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handleSubmit"> Submit </button>
+          <button onClick={this.getNextQuestion} type="submit" className="btn btn-default" id="handleNext" disabled={disNext} > Next </button>
           <button type="button" id="hint-button" className="btn btn-danger" data-toggle="popover" title="Hint" data-content="Heres a hint: ">Hint</button>
-          <button onClick={this.getNextQuestion} type="submit" className="btn btn-default" id="handleNext"> Next </button>
       </div>
     );
   }
