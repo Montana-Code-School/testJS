@@ -102,3 +102,12 @@ body {
   margin: 0 auto;
   max-width: 29%;
 }
+.alert{
+  display: block;
+  margin: 0 auto 10px;
+  max-width: 600px;
+}
+.alert-message {
+  text-align: center;
+  display: block;
+}

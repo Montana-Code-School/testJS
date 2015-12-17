@@ -156,10 +156,10 @@ module.exports = function(app, passport) {
             console.log(ea);
             console.log(op);
             if (ea === op ) {
-              console.log('its passing');
+              console.log('The answer passed the sandbox');
             } else {
               console.log(op, 'output.result');
-              console.log('whatever else');
+              console.log('The answer failed the sandbox');
             }
           });
         }

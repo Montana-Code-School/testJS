@@ -82,7 +82,7 @@ var App = React.createClass({
   },
 
   sendCodeToServer(code) {
-
+    var self = this;
     var answer = {answer: code};
     var exerciseId = this.state.currentExercise._id;
     var userExercise = this.state.currentExercise;
@@ -93,8 +93,17 @@ var App = React.createClass({
       data: answer,
       type: 'POST',
       success: function(data) {
-        var result = (data.pass === true ? 'correct!' : 'wrong, try again!');
-        alert('Your answer is ' + result);
+        var result = (data.pass === true ? 'correct!' : 'incorrect, try again!');
+        if (data.pass){
+          $(self.refs.alert).children().remove();
+          $(self.refs.alert).append('<div></div>');
+          $(self.refs.alert).children().append('<div class="alert alert-success alert-message" role="alert"><p>Correct!<p></div>')
+        } else {
+          $(self.refs.alert).children().remove();
+          $(self.refs.alert).append('<div></div>');
+          $(self.refs.alert).children().append('<div class="alert alert-danger alert-message" role="alert"><p> Incorrect, try again! <p></div>')
+        }
+
       },
       error: function(xhr, status, err) {
         console.error(status, err.toString());
@@ -128,6 +137,7 @@ var App = React.createClass({
       gutters: ['CodeMirror-lint-markers'],
       lint: true,
     };
+
     var disPrev = this.state.currentExercise ? (this.state.currentExercise.prev ? false : true) : true;
     var disNext = this.state.currentExercise ? (this.state.currentExercise.next ? false : true) : true;
     return (
@@ -137,7 +147,10 @@ var App = React.createClass({
           <div className="" id="codeMirrorBox">
             <Codemirror ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
           </div>
-        </div>
+          </div>
+          <div ref='alert'>
+            <div></div>
+          </div>
         <div id="codeMirrorButtons">
           <button onClick={this.getPrevQuestion.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handlePrev" disabled={disPrev} > Previous </button>
           <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handleSubmit"> Submit </button>
