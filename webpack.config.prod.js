@@ -4,14 +4,10 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'source-map',
   entry: {
-    index: ['webpack-hot-middleware/client',
-    './client/app'],
-    postExerciseBox: ['webpack-hot-middleware/client',
-    './client/postExerciseBox'],
-    userProfile: ['webpack-hot-middleware/client',
-      './client/userProfile'],
-    crudBox: ['webpack-hot-middleware/client',
-    './client/crudBox'],
+    index: ['./client/app'],
+    postExerciseBox: ['./client/postExerciseBox'],
+    userProfile: [  './client/userProfile'],
+    crudBox: ['./client/crudBox'],
   },
   output: {
     path: path.join(__dirname, 'static'),
