@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Exercises = require('../models/exercises');
 var Answer = require('../models/answers');
+var Sandbox = require('sandbox');
+var s = new Sandbox();
 
 module.exports = function(app, passport) {
 
@@ -20,19 +22,6 @@ module.exports = function(app, passport) {
       }
     });
   });
-
-  // app.get('/api/user/exercises/', function(req, res) {
-  //   mongoose.model('User').findById({
-  //     _id: req.user._id
-  //   })
-  //   .populate('exercises').exec(function(err, exercise) {
-  //     if (err) {
-  //       return console.log('err');
-  //     } else {
-  //       res.json(exercise);
-  //     }
-  //   });
-  // });
 
   app.post('/api/exercises/', function(req, res) {
 
@@ -78,29 +67,6 @@ module.exports = function(app, passport) {
     });
   });
 
-
-// we need to get the answer based on the user
-// use case
-// get all
-//     wehn these are retrieved you need to find that last path and sort by
-//     date, need to add date field.  date.now
-// get a single answer
-
-// get types
-
-  // app.get('/api/userAnswers/:id/:type', function(req,res) {
-  //   mongoose.model('Answer').find({
-  //     user: req.params.id,
-  //     exercise: { type: req.params.type }
-  //   }, function(err, answer) {
-  //     if (err) {
-  //       res.send(err);
-  //     } else {
-  //       res.json(answer);
-  //     }
-  //   });
-  // });
-
   app.get('/api/exercises/:id', function(req, res) {
     mongoose.model('Exercises').findById({
       _id: req.params.id
@@ -145,9 +111,7 @@ var validExercises = [];
               return filterByUser(userAnswers);
             }
           };
-
         data.forEach(userAnswerArray);
-
         function filterByUser(answers) {
               for(var i = 0; i < answers.length; i++) {
                 if(answers[i].pass === false && answers[i].user.toString() == uId.toString()) { 
@@ -160,8 +124,8 @@ var validExercises = [];
           var hello = filterFunction(exercise);
           res.json(hello);
         };
-    });  // exec
-  });  //  app.get
+    }); 
+  }); 
 
   app.get('/api/user/answer/', function(req, res){
     mongoose.model('Answer').find({
@@ -177,26 +141,43 @@ var validExercises = [];
       });
   });
 
-  app.post('/api/answer/:id', function(req, res) {
 
+  app.post('/api/answer/:id', function(req, res) {
     mongoose.model('Exercises').findById({
       _id: req.params.id
     }, function(err, exercise) {
+
       if (err) {
         res.send('houston we have a problem');
       } else {
-        var itPasses = exercise.answer === req.body.answer;
+        
+          function runSand (d) {
+            s.run( "'" + d + "'", function( output ) {
+              var ea = "'" + exercise.answer + "'";
+              var op = output.result;
+              console.log(ea);
+              console.log(op);
+              if (ea == op ) {
+                console.log('its passing')
+                
+              } else {
+              console.log(op, "output.result");
+                console.log('whatever else')
+                
+              }
+            });
+          };
+        runSand(req.body.answer);
         mongoose.model('Answer').create({
           exercise: req.params.id,
           answer: req.body.answer,
-          pass: itPasses,
+          pass: exercise.answer === req.body.answer ? true : false,
           user: req.user._id
         }, function(errAns, answer) {
           if (errAns) {
             res.send(errAns);
           } else {
             exercise.userAnswer.push(answer);
-            console.log('Answer', exercise.userAnswer)
             exercise.save();
             res.json(answer);
           }

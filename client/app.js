@@ -4,6 +4,7 @@ var Codemirror = require('./Codemirror');
 var UserGrav = require('./userGrav');
 var Exercises = require('./exercises');
 
+
 require('codemirror/addon/lint/lint.js');
 require('codemirror/addon/lint/javascript-lint.js');
 require('codemirror/lib/codemirror.js');
@@ -41,7 +42,6 @@ var App = React.createClass({
       return exercise.prev === null
     })
     if(exerciseList.length !== 0){
-      //this.updateExerciseId(exerciseList[0]._id);
       this.setState({
         currentExercise: exerciseList[0]
       })
@@ -67,7 +67,8 @@ var App = React.createClass({
     });
   },
 
-  //currentExercise, exercises array
+  
+
   getNextQuestion() {
     var nextExercise = this.state.exercises.filter(e => e._id === this.state.currentExercise.next);
 
@@ -85,7 +86,7 @@ var App = React.createClass({
   },
 
   sendCodeToServer(code) {
-
+    
     var answer = {answer: code};
     var exerciseId = this.state.currentExercise._id;
     $.ajax({
