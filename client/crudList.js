@@ -83,31 +83,33 @@ var CrudList = React.createClass({
         return (
 
           <div key={exercises._id}>
-            <div className="col-md-4">
-              <h1>Edit {exercises.name}</h1>
-              <form>
-                <div key={exercises._id}>
-                  <div className="form-group">
-                    <label>Exercise Name</label>
-                    <textarea rows="1" type="text" ref="name" className="form-control" defaultValue={exercises.name}/>
-                  </div>
-                  <div className="form-group">
-                    <label>Exercise Type</label>
-                    <textarea rows="1" type="text" ref="type" className="form-control" defaultValue={exercises.type}/>
-                  </div>
-                  <div className="form-group">
-                    <label>Exercise Problem</label>
-                    <textarea rows="10" type="text" className="form-control" ref="problem" defaultValue={exercises.problem}/>
+            <div className="">
+              <div className="col-md-4">
+                <h1>Edit {exercises.name}</h1>
+                <form>
+                  <div key={exercises._id}>
+                    <div className="form-group">
+                      <label>Exercise Name</label>
+                      <textarea rows="1" type="text" ref="name" className="form-control" defaultValue={exercises.name}/>
                     </div>
-                  <div className="form-group">
-                    <label>Exercise Answer</label>
-                    <textarea rows="10" type="text" ref="answer" className="form-control" defaultValue={exercises.answer}/>
+                    <div className="form-group">
+                      <label>Exercise Type</label>
+                      <textarea rows="1" type="text" ref="type" className="form-control" defaultValue={exercises.type}/>
+                    </div>
+                    <div className="form-group">
+                      <label>Exercise Problem</label>
+                      <textarea rows="10" type="text" className="form-control" ref="problem" defaultValue={exercises.problem}/>
+                      </div>
+                    <div className="form-group">
+                      <label>Exercise Answer</label>
+                      <textarea rows="10" type="text" ref="answer" className="form-control" defaultValue={exercises.answer}/>
+                    </div>
+                    <div className="form-group">
+                      <button onClick={that.handleUpdate.bind(that, exercises._id)} type="submit" className="btn btn-default"> Submit {exercises.name}</button>
+                    </div>
                   </div>
-                  <div className="form-group">
-                    <button onClick={that.handleUpdate.bind(that, exercises._id)} type="submit" className="btn btn-default"> Submit {exercises.name}</button>
-                  </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         );
@@ -116,27 +118,32 @@ var CrudList = React.createClass({
 
     var updateExerciseData = this.props.data.map(function(exercises) {
       return (
-        <div key={exercises._id} className="well">
-          <table>
-            <tbody>
-              <tr>
-                <td>{exercises.name}</td>
-                <td></td>
-                <td><button onClick={that.toggle.bind(this, exercises.name)}><i className="fa fa-pencil fa-1x"></i></button></td>
-                <td><button onClick={that.deleteExercise.bind(this, exercises._id)}><i className="fa fa-trash-o fa-1x"></i></button></td>
-              </tr>
-            </tbody>
-          </table>
+        <div key={exercises._id} className="">
+            <div className="well" id="updateForm">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>{exercises.name}</td>
+                    <td></td>
+                    <td><button onClick={that.toggle.bind(this, exercises.name)}><i className="fa fa-pencil fa-1x"></i></button></td>
+                    <td><button onClick={that.deleteExercise.bind(this, exercises._id)}><i className="fa fa-trash-o fa-1x"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
         </div>
       );
     });
     return (
-      <div className="container">
+      <div className="">
         <div>
           {renderUpdateForm}
         </div>
-        <div className="container">
+        <div className="col-md-4">
           <div>
+            <div id="exerciseIdTitle">
+              <h1> Exercise List </h1>
+            </div>
             <h1>{updateExerciseData}</h1>
           </div>
         </div>

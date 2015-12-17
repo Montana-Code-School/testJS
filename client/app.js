@@ -138,14 +138,16 @@ var App = React.createClass({
       <div>
         <Exercises data={this.state.currentExercise}  />
         <div className="container">
-          <div className="col-md-8">
+          <div className="" id="codeMirrorBox">
             <Codemirror ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
           </div>
         </div>
+        <div id="codeMirrorButtons">
           <button onClick={this.getPrevQuestion.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handlePrev" disabled={disPrev} > Previous </button>
           <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handleSubmit"> Submit </button>
           <button onClick={this.getNextQuestion} type="submit" className="btn btn-default" id="handleNext" disabled={disNext} > Next </button>
-          <button type="button" id="hint-button" className="btn btn-danger" data-toggle="popover" title="Hint" data-content="Heres a hint: ">Hint</button>
+          <button type="button" className="btn btn-danger" data-toggle="popover" title="Hint" data-content="Heres a hint: ">Hint</button>
+        </div>
       </div>
     );
   }

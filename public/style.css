@@ -23,6 +23,10 @@ body {
   max-width: 100%;
   padding: 1em;
 }
+.container #codeMirrorBox {
+  max-width: 70%;
+}
+
 .exerciseName {
   text-align: center;
 }
@@ -62,9 +66,6 @@ body {
 #instructionNav {
   float: right;
 }
-#hint-button {
-  margin: 10px;
-}
 #home-title {
   text-align: center;
 }
@@ -72,4 +73,22 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+#updateForm {
+  overflow: hidden;
+}
+#exerciseIdTitle {
+  margin-bottom: 33px;
+}
+#codeMirrorBox {
+  display: block;
+  margin: 0 auto;
+}
+#codeMirrorButtons button{
+  margin: 0 5px;
+}
+#codeMirrorButtons {
+  display: block;
+  margin: 0 auto;
+  max-width: 29%;
 }
