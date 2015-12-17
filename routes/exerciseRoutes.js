@@ -164,11 +164,12 @@ module.exports = function(app, passport) {
           });
         }
         runSand(req.body.answer);
+        var user = req.user._id ? req.user._id : null;
         mongoose.model('Answer').create({
           exercise: req.params.id,
           answer: req.body.answer,
           pass: exercise.answer === req.body.answer ? true : false,
-          user: req.user._id
+          user: user
         }, function(errAns, answer) {
           if (errAns) {
             res.send(errAns);
