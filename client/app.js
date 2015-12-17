@@ -36,16 +36,30 @@ var App = React.createClass({
   componentDidMount: function() {
     this.loadExercises();
   },
+  getNextQuestion() {
+    var nextExercise = this.state.exercises.filter(e => e._id === this.state.currentExercise.next);
 
-  managingExerciseState: function(){
-    var exerciseList = this.state.exercises.filter(function(exercise){
-      return exercise.prev === null
-    })
-    if(exerciseList.length !== 0){
+    this.setState({
+      currentExercise: nextExercise ? nextExercise[0] : null
+    });
+  },
+
+  getPrevQuestion() {
+    var prevExercise = this.state.exercises.filter(e => e._id === this.state.currentExercise.prev);
+
+    this.setState({
+      currentExercise: prevExercise ? prevExercise[0] : null
+    });
+  },
+  managingExerciseState: function() {
+    var exerciseList = this.state.exercises.filter(function(exercise) {
+      return exercise.prev === null;
+    });
+    if (exerciseList.length !== 0) {
       this.setState({
         currentExercise: exerciseList[0]
-      })
-      console.log(exerciseList)
+      });
+      console.log(exerciseList);
     }
   },
 
@@ -67,29 +81,11 @@ var App = React.createClass({
     });
   },
 
-  
-
-  getNextQuestion() {
-    var nextExercise = this.state.exercises.filter(e => e._id === this.state.currentExercise.next);
-
-    this.setState({
-      currentExercise: nextExercise ? nextExercise[0] : null 
-    });
-  },
-
-  getPrevQuestion() {
-    var prevExercise = this.state.exercises.filter(e => e._id === this.state.currentExercise.prev);
-
-    this.setState({
-      currentExercise: prevExercise ? prevExercise[0] : null 
-    });
-  },
-
   sendCodeToServer(code) {
-    
+
     var answer = {answer: code};
     var exerciseId = this.state.currentExercise._id;
-    var userExercise = this.state.currentExercise
+    var userExercise = this.state.currentExercise;
     $.ajax({
       url: this.props.url + exerciseId,
       dataType: 'json',
@@ -97,7 +93,7 @@ var App = React.createClass({
       data: answer,
       type: 'POST',
       success: function(data) {
-        var result = (data.pass === true ? 'correct!' : "wrong, try again!");
+        var result = (data.pass === true ? 'correct!' : 'wrong, try again!');
         alert('Your answer is ' + result);
       },
       error: function(xhr, status, err) {
@@ -136,7 +132,7 @@ var App = React.createClass({
     var disNext = this.state.currentExercise ? (this.state.currentExercise.next ? false : true) : true;
     return (
       <div>
-        <Exercises data={this.state.currentExercise}  />
+        <Exercises data={this.state.currentExercise} />
         <div className="container">
           <div className="" id="codeMirrorBox">
             <Codemirror ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
