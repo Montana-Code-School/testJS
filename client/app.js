@@ -1,8 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var Codemirror = require('./Codemirror');
-var Exercises = require('./exercises');
 var UserGrav = require('./userGrav');
+var Exercises = require('./exercises');
+
 
 require('codemirror/addon/lint/lint.js');
 require('codemirror/addon/lint/javascript-lint.js');
@@ -11,7 +12,7 @@ require('codemirror/mode/javascript/javascript.js');
 require('codemirror/mode/css/css.js');
 
 var defaults = {
-  javascript: 'var booger = (2+2);',
+  javascript: 'Insert code here',
 };
 
 var App = React.createClass({
@@ -26,37 +27,78 @@ var App = React.createClass({
       readOnly: false,
       mode: 'javascript',
       data: [],
-      lint: true
+      lint: true,
+      exercises: [],
+      currentExercise: null
     };
   },
 
-  getNextQuestion() {
+  componentDidMount: function() {
+    this.loadExercises();
+  },
 
+  managingExerciseState: function(){
+    var exerciseList = this.state.exercises.filter(function(exercise){
+      return exercise.prev === null
+    })
+    if(exerciseList.length !== 0){
+      this.setState({
+        currentExercise: exerciseList[0]
+      })
+      console.log(exerciseList)
+    }
+  },
+
+  loadExercises: function() {
+
+    $.ajax({
+      url: '/api/exercises/',
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        console.log('Loaded exercises from server');
+        this.setState({exercises: data});
+        this.managingExerciseState();
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.log('Broken url is ', '/api/exercises/');
+        console.error(status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  
+
+  getNextQuestion() {
+    var nextExercise = this.state.exercises.filter(e => e._id === this.state.currentExercise.next);
+
+    this.setState({
+      currentExercise: nextExercise ? nextExercise[0] : null 
+    });
   },
 
   getPrevQuestion() {
+    var prevExercise = this.state.exercises.filter(e => e._id === this.state.currentExercise.prev);
 
-  },
-
-  handleSubmit() {
-
+    this.setState({
+      currentExercise: prevExercise ? prevExercise[0] : null 
+    });
   },
 
   sendCodeToServer(code) {
-
-    var answer = {answer: code};
-
-    var id = '567078c986401c8499c26888';
     
-
+    var answer = {answer: code};
+    var exerciseId = this.state.currentExercise._id;
+    var userExercise = this.state.currentExercise
     $.ajax({
-      url: '/api/answer/' + id,
+      url: this.props.url + exerciseId,
       dataType: 'json',
       cache: false,
       data: answer,
       type: 'POST',
       success: function(data) {
-        alert('Your answer is ');
+        var result = (data.pass === true ? 'correct!' : "wrong, try again!");
+        alert('Your answer is ' + result);
       },
       error: function(xhr, status, err) {
         console.error(status, err.toString());
@@ -90,19 +132,23 @@ var App = React.createClass({
       gutters: ['CodeMirror-lint-markers'],
       lint: true,
     };
+    var disPrev = this.state.currentExercise ? (this.state.currentExercise.prev ? false : true) : true;
+    var disNext = this.state.currentExercise ? (this.state.currentExercise.next ? false : true) : true;
     return (
       <div>
+        <Exercises data={this.state.currentExercise}  />
         <div className="container">
           <div className="col-md-8">
             <Codemirror ref="studentAnswer" type = "text" value={this.state.code} onChange={this.updateCode} options={options} />
           </div>
         </div>
+          <button onClick={this.getPrevQuestion.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handlePrev" disabled={disPrev} > Previous </button>
           <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handleSubmit"> Submit </button>
+          <button onClick={this.getNextQuestion} type="submit" className="btn btn-default" id="handleNext" disabled={disNext} > Next </button>
           <button type="button" id="hint-button" className="btn btn-danger" data-toggle="popover" title="Hint" data-content="Heres a hint: ">Hint</button>
       </div>
     );
   }
 });
 
-ReactDOM.render(<App url="/api/exercises/"/>, document.getElementById('my-app'));
-ReactDOM.render(<UserGrav url="/api/users/"/>, document.getElementById('local-image'));
+ReactDOM.render(<App url="/api/answer/" />, document.getElementById('my-app'));

@@ -11,8 +11,8 @@ function drawAllToCanvas () {
         var r = 200;
 
         var start = {
-          x: 100,
-          y: 300
+          x: 210,
+          y: 280
         };
 
         var myLine = {
@@ -92,7 +92,7 @@ function drawAllToCanvas () {
                     logo = new Image();
                     logo.src = 'imgs/learnJS.png';
                     logo.onload = function(){
-                      ctx.drawImage(logo, 280, 80);
+                      ctx.drawImage(logo, 396, 80);
                     }
                   }
                 drawLineAcross();
