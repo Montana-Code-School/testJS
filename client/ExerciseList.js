@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Exercises = require('./exercises')
+var Exercises = require('./exercises');
 
 var ExerciseList = React.createClass({
 
@@ -9,7 +9,7 @@ var ExerciseList = React.createClass({
   },
 
   render: function() {
-    return(
+    return (
       <div>
         <div id="exerciseDiv" className="well">
           <h1 id="exerciseName">{this.props.data ? this.props.data.name : ''}</h1>
@@ -17,7 +17,7 @@ var ExerciseList = React.createClass({
         </div>
       </div>
       );
-    }
-  });
+  }
+});
 
 module.exports = ExerciseList;

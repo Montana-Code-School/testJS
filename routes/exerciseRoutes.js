@@ -91,43 +91,42 @@ module.exports = function(app, passport) {
       });
   });
 
-var validExercises = [];
+  var validExercises = [];
 
   app.get('/api/user/exercises/', function(req, res) {
     mongoose.model('Exercises').find({})
     .populate('Users')
     .populate('userAnswer')
-    .populate({path:'userAnswer', populate: {path: 'exercise'}})
-    .exec(function(err, exercise) {  
+    .populate({path: 'userAnswer', populate: {path: 'exercise'}})
+    .exec(function(err, exercise) {
       if (err) {
         return console.log('err');
       } else {
         var uId = req.user._id;
-        var filterFunction = function (data) {
-
-          function userAnswerArray (datadata) {
-            if(datadata.userAnswer.length > 0) {
+        var filterFunction = function(data) {
+          function filterByUser(answers) {
+            for (var i = 0; i < answers.length; i++) {
+              if (answers[i].pass === false && answers[i].user.toString() === uId.toString()) {
+                validExercises.push(answers[i]);
+              }
+            }
+          }
+          function userAnswerArray(datadata) {
+            if (datadata.userAnswer.length > 0) {
               var userAnswers = datadata.userAnswer;
               return filterByUser(userAnswers);
             }
-          };
-        data.forEach(userAnswerArray);
-        function filterByUser(answers) {
-              for(var i = 0; i < answers.length; i++) {
-                if(answers[i].pass === false && answers[i].user.toString() == uId.toString()) { 
-                  validExercises.push(answers[i]);
-                }  
-              }
-            };
-            return validExercises;
-        }
-          var hello = filterFunction(exercise);
-          res.json(hello);
+          }
+          data.forEach(userAnswerArray);
+          return validExercises;
         };
-    }); 
-  }); 
+        var hello = filterFunction(exercise);
+        res.json(hello);
+      }
+    });
+  });
 
-  app.get('/api/user/answer/', function(req, res){
+  app.get('/api/user/answer/', function(req, res) {
     mongoose.model('Answer').find({
       user: req.user._id
     })
@@ -150,23 +149,20 @@ var validExercises = [];
       if (err) {
         res.send('houston we have a problem');
       } else {
-        
-          function runSand (d) {
-            s.run( "'" + d + "'", function( output ) {
-              var ea = "'" + exercise.answer + "'";
-              var op = output.result;
-              console.log(ea);
-              console.log(op);
-              if (ea == op ) {
-                console.log('its passing')
-                
-              } else {
-              console.log(op, "output.result");
-                console.log('whatever else')
-                
-              }
-            });
-          };
+        function runSand(d) {
+          s.run( "'" + d + "'", function( output ) {
+            var ea = "'" + exercise.answer + "'";
+            var op = output.result;
+            console.log(ea);
+            console.log(op);
+            if (ea === op ) {
+              console.log('its passing');
+            } else {
+              console.log(op, 'output.result');
+              console.log('whatever else');
+            }
+          });
+        }
         runSand(req.body.answer);
         mongoose.model('Answer').create({
           exercise: req.params.id,
