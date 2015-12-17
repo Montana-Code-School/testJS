@@ -168,7 +168,7 @@ module.exports = function(app, passport) {
         mongoose.model('Answer').create({
           exercise: req.params.id,
           answer: req.body.answer,
-          pass: exercise.answer === req.body.answer ? true : false,
+          pass: exercise.answer.trim() === req.body.answer.trim() ? true : false,
           user: user
         }, function(errAns, answer) {
           if (errAns) {
