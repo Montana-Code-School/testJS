@@ -1,0 +1,220 @@
+/* 1 */
+{
+    "_id" : ObjectId("5671b32edd7672b7207e81e5"),
+    "type" : "Arrays",
+    "name" : "Variables #1: In JavaScript, a variable is a container for storing data values.  Variables can hold strings, numbers, arrays, or objects.  Here the variable 'length' holds a number value, 16:  var length = 16;",
+    "problem" : "Create a variable named height that holds the value 100.  Don't for get the semicolon at the end of your statement!",
+    "answer" : "var height = 100;",
+    "next" : ObjectId("5671b405dd7672b7207e81e6"),
+    "prev" : null,
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5671b405dd7672b7207e81e6"),
+    "type" : "Arrays",
+    "name" : "Variables #2: Here is a variable that holds a string.  var career = \"computer programmer\"; Notice the string is surrounded by quotation marks.",
+    "problem" : "Create a variable named artist that hold the value \"Picasso\".",
+    "answer" : "var artist = \"Picasso\";",
+    "next" : ObjectId("5671c080dd7672b7207e81e7"),
+    "prev" : ObjectId("5671b32edd7672b7207e81e5"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5671c080dd7672b7207e81e7"),
+    "type" : "Arrays",
+    "name" : "Variables #3: Next you will create a variable that holds an array.  Here is an array named artists that holds three values: var artists = [\"Kahlo\", \"Picasso\", \"Hopper\"];",
+    "problem" : "Create an array named madMen that holds the values \"Don\", \"Walter\", and \"Peggy\".",
+    "answer" : "var madMen = [\"Don\", \"Walter\", \"Peggy\"];",
+    "next" : ObjectId("5671c462dd7672b7207e81e8"),
+    "prev" : ObjectId("5671b405dd7672b7207e81e6"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5671c462dd7672b7207e81e8"),
+    "type" : "Arrays",
+    "name" : "Variables #4: Variable values can be changed.  For instance, let's begin by declaring a variable: var lastName = \"Smith\";  I can then give lastName a new value like so: lastName = \"Jones\";  The value of lastName is now \"Jones\".  (Notice I didn't put \"var\" in front of lastName when I reassigned its value to \"Jones\".)",
+    "problem" : "Create a variable called firstName with a value of \"Sam\";  Then, following the format in the example above, change the value of firstName to \"Ian\".",
+    "answer" : "var firstName = \"Sam\";\nfirstName = \"Ian\";",
+    "next" : ObjectId("5671c71edd7672b7207e81e9"),
+    "prev" : ObjectId("5671c080dd7672b7207e81e7"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("5671c71edd7672b7207e81e9"),
+    "type" : "Arrays",
+    "name" : "Variables #5: Because variables can hold number values, you can use them to do math problems.  To illustrate this, I'll create two variables that hold numbers, and then create another variable that will allow us to add those values together.  var price1 = 15;  var price2 = 20;  var total = price1 + price2;  Given the current values of price1 and price2, total would return 35.",
+    "problem" : "Create a variable called cost1 with a value of 100.  Create a second variable called cost2 with a value of 50.  Now, create a third variable called totalCost that adds these two variables together.  (Make sure it adds with the variables, not the number values!)",
+    "answer" : "var cost1 = 100;\nvar cost2 = 50;\nvar totalCost = cost1 + cost2;",
+    "next" : ObjectId("5671e699c34452ae23152808"),
+    "prev" : ObjectId("5671c462dd7672b7207e81e8"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("5671cd20dd7672b7207e81eb"),
+    "type" : "Arrays",
+    "name" : "Strings #2: In JavaScript, strings have methods that are native to them. These methods are handy built-in tools we can use to manipulate the data within any given string. Let's begin by using toUpperCase().  First, notice the parens() after the method.  These tell the compiler we expect toUpperCase to DO something to the string.  Don't forget them in your code!  var name = \"Kelly\";  This would return \"Kelly\".  name.toUpperCase(); returns \"KELLY\"",
+    "problem" : "Create a string called title with a value of \"To Kill a Mockingbird\".  Then use the toUpperCase() method on it.  Use the example above as your guide.",
+    "answer" : "var title = \"To Kill a Mockingbird\";\ntitle.toUpperCase();",
+    "next" : ObjectId("5671cea5dd7672b7207e81ec"),
+    "prev" : ObjectId("5671c9f0dd7672b7207e81ea"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 7 */
+{
+    "_id" : ObjectId("5671c9f0dd7672b7207e81ea"),
+    "type" : "Arrays",
+    "name" : "Strings #1: A JavaScript string stores a series of characters like \"John Doe\".  A string can be any text inside double or single quotes: var dog = \"Fido\";  var cat = 'Milo';  Either type of quote can be used but you must be consistent.  For instance, this would break your code: var cat = \"Milo';",
+    "problem" : "Create a string named puppy with a value of Sparky.  Use double quotes.",
+    "answer" : "var puppy = \"Sparky\";",
+    "next" : ObjectId("5671cd20dd7672b7207e81eb"),
+    "prev" : null,
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 8 */
+{
+    "_id" : ObjectId("5671cea5dd7672b7207e81ec"),
+    "type" : "Arrays",
+    "name" : "Strings #3: Using toLowerCase().  This works the same way as toUpperCase().",
+    "problem" : "Create a string called ski with a value of \"Snow Bowl\".  Then use the toLowerCase() method on it.",
+    "answer" : "var ski = \"Snow Bowl\";\nski.toLowerCase();",
+    "next" : ObjectId("5671d3cbdd7672b7207e81ed"),
+    "prev" : ObjectId("5671cd20dd7672b7207e81eb"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 9 */
+{
+    "_id" : ObjectId("5671d3cbdd7672b7207e81ed"),
+    "type" : "Arrays",
+    "name" : "Strings #4: The next method is indexOf().  String indexes in JavaScript are zero-based: The first character is in position 0, the second in 1, and so on.  The indexOf() method returns the index within the string of the first occurrence of the specified value, starting the search at fromIndex (or 0, if no value is given for fromIndex). The method returns -1 if the value is not found. Note:  spaces count as values.  Let's start with a basic example.  var indexOfString = \"This is our test string for the indexOf method.\";  \nindexOfString.indexOf('This'); returns 0\nindexOfString.indexOf('test'); returns 12\nindexOfString.indexOf('blue'); returns -1, meaning the value was not found.",
+    "problem" : "Create a string called newString with a value of \"Another string to test.\"  Use indexOf() to find the index of 'to'.",
+    "answer" : "var newString = \"Another string to test.\";\nnewString.indexOf('to');",
+    "next" : ObjectId("5671d70cdd7672b7207e81ee"),
+    "prev" : ObjectId("5671cea5dd7672b7207e81ec"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 10 */
+{
+    "_id" : ObjectId("5671e699c34452ae23152808"),
+    "type" : "Arrays",
+    "name" : "Arrays #1:  JavaScript arrays are used to store multiple values in a single variable.  An example would be... var students = [\"Kim\", \"Dave\", \"Mark\", \"Jen\"];",
+    "problem" : "Create an array called instructors with the values \"Doug\", \"Harold\", and \"Doug O\".",
+    "answer" : "var instructors = [\"Doug\", \"Harold\", \"Doug O\"];",
+    "next" : ObjectId("5671e984282956e72347afcc"),
+    "prev" : ObjectId("5671c71edd7672b7207e81e9"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 11 */
+{
+    "_id" : ObjectId("5671d70cdd7672b7207e81ee"),
+    "type" : "Arrays",
+    "name" : "Strings #5: The lastIndexOf() method returns the index within the string of the last occurrence of the specified value, or -1 if not found.  The format is str.lastIndexOf(searchValue[, fromIndex]).  The string is searched backward, starting at fromIndex.  If no fromIndex is given the method returns the last instance of the search value.  (Remember that a string's index begins at zero!).  To make all that intelligible, here are some examples.  var fruit = \"banana\";  fruit.lastIndexOf('a'); //answer is 5  fruit.lastIndexOf('a', 2); //answer is 1  fruit.lastIndexOf('a', 4); //answer is 3",
+    "problem" : "Create a string called car with a value of \"Super Junker\".  Find the lastIndexOf 'er'.",
+    "answer" : "var car = \"Super Junker\";\ncar.lastIndexOf('er');",
+    "next" : ObjectId("5671df00dd7672b7207e81ef"),
+    "prev" : ObjectId("5671d3cbdd7672b7207e81ed"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 12 */
+{
+    "_id" : ObjectId("5671df00dd7672b7207e81ef"),
+    "type" : "Arrays",
+    "name" : "Strings #6: The charAt() method returns the specified character from a string. Characters in a string are indexed from left to right. The index of the first character is 0, and the index of the last character in a string called stringName is stringName.length - 1. If the index you supply is out of range, JavaScript returns an empty string.  Here are some examples: var newString = \"Remember that all strings begin at index 0.\";  newString.charAt(0); //answer is 'R'  newString.charAt(1); //answer is 'e'  newString.charAt(42);  //answer is '.'",
+    "problem" : "Create a string called soManyCats with the value \"Who's a crazy cat lady?\".  Find the character at index 12.",
+    "answer" : "var soManyCats = \"Who's a crazy cat lady?\";\nsoManyCats.charAt(12);",
+    "next" : ObjectId("5671ea97282956e72347afcd"),
+    "prev" : ObjectId("5671d70cdd7672b7207e81ee"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 13 */
+{
+    "_id" : ObjectId("5671e984282956e72347afcc"),
+    "type" : "Arrays",
+    "name" : "Arrays #2: Arrays have a zero-based index.  You refer to an array element by referring to the index number.  var students = [\"Kim\", \"Dave\", \"Mark\", \"Jen\"];  students[0]; //returns \"Kim\"  students[1]; //returns \"Dave\"  students[3]; //returns \"Jen\"",
+    "problem" : "Create an array called instruments with the values \"violin\", \"piano\", \"tuba\" and \"guitar\".  Using the format above, enter the index for \"tuba\".",
+    "answer" : "var instruments = [\"violin\", \"piano\", \"tuba\", \"guitar\"];\ninstruments[2];",
+    "next" : ObjectId("5671ec07282956e72347afce"),
+    "prev" : ObjectId("5671e699c34452ae23152808"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 14 */
+{
+    "_id" : ObjectId("5671ea97282956e72347afcd"),
+    "type" : "Arrays",
+    "name" : "Arrays #3: You can find out how many items are in an array by using the length property: var students = [\"Kim\", \"Dave\", \"Mark\", \"Jen\"];  students.length;  // the length of students is 4",
+    "problem" : "Create an array called cookies with the values \"chocolate chip\" and \"ginger snap\".  Find its length.",
+    "answer" : "var cookies = [\"chocolate chip\", \"ginger snap\"];\ncookies.length;",
+    "next" : ObjectId("5671ed32282956e72347afcf"),
+    "prev" : ObjectId("5671df00dd7672b7207e81ef"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 15 */
+{
+    "_id" : ObjectId("5671ed32282956e72347afcf"),
+    "type" : "Arrays",
+    "name" : "Arrays #5: The pop() method removes the last element from an array.  Use the same format as the push() method.",
+    "problem" : "Peas are boring.  Let's remove them from the veggies array.  Recreate the veggies array (\"carrots\", \"leeks\", \"peas\").  Then pop the peas out of it.",
+    "answer" : "var veggies = [\"carrots\", \"leeks\", \"peas\"];\nveggies.pop(\"peas\");",
+    "next" : null,
+    "prev" : ObjectId("5671ea97282956e72347afcd"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 16 */
+{
+    "_id" : ObjectId("5671efaa282956e72347afd0"),
+    "type" : "Arrays",
+    "name" : "Arrays #6: The shift() method removes the first element of an array, and \"shifts\" all other elements one place up.  An example using our students array:  var students = [\"Kim\", \"Dave\", \"Mark\", \"Jen\"];  students.shift(); //Removes the first element (\"Kim\") from the array.  \"Dave\" is now at index[0]. Notice Kim's name wasn't in the parens.",
+    "problem" : "Create an array called fruits with the values \"apple\", \"orange\" and \"dragon fruit\".  Then remove \"apple\".",
+    "answer" : "var fruits = [\"apple\", \"orange\", \"dragon fruit\"];\nfruits.shift();",
+    "next" : null,
+    "prev" : ObjectId("5671ec07282956e72347afce"),
+    "userAnswer" : [],
+    "__v" : 0
+}
+
+/* 17 */
+{
+    "_id" : ObjectId("5671ec07282956e72347afce"),
+    "type" : "Arrays",
+    "name" : "Arrays #4: One way to add an item to an array is the push() method.  The new element is added to the END of the array: students.push(\"Larry\");  // adds a new element (Larry) to the END of the students array.",
+    "problem" : "Create an array called veggies with the values \"carrots\" and \"leeks\".  Use push() to add \"peas\".",
+    "answer" : "var veggies = [\"carrots\", \"leeks\"];\nveggies.push('peas');",
+    "next" : ObjectId("5671efaa282956e72347afd0"),
+    "prev" : ObjectId("5671e984282956e72347afcc"),
+    "userAnswer" : [],
+    "__v" : 0
+}
