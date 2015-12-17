@@ -12,7 +12,7 @@ require('codemirror/mode/javascript/javascript.js');
 require('codemirror/mode/css/css.js');
 
 var defaults = {
-  javascript: 'Harold and doug',
+  javascript: 'Insert code here',
 };
 
 var App = React.createClass({
@@ -89,6 +89,7 @@ var App = React.createClass({
     
     var answer = {answer: code};
     var exerciseId = this.state.currentExercise._id;
+    var userExercise = this.state.currentExercise
     $.ajax({
       url: this.props.url + exerciseId,
       dataType: 'json',
@@ -96,7 +97,8 @@ var App = React.createClass({
       data: answer,
       type: 'POST',
       success: function(data) {
-        alert('Your answer is ');
+        var result = (data.pass === true ? 'correct!' : "wrong, try again!");
+        alert('Your answer is ' + result);
       },
       error: function(xhr, status, err) {
         console.error(status, err.toString());
