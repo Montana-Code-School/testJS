@@ -41,8 +41,9 @@ body {
 }
 
 .navbar {
-  background-color: tomato;
+  background-color: bisque;
   margin-bottom: 0;
+  border-bottom: 2px solid #777;
 }
 .navbar-brand{
   font-size: 30px;
@@ -51,7 +52,7 @@ body {
 .jumbotron {
   text-align: center;
   margin-top: 0;
-  background-color: turquoise;
+  background-color: cadetblue;
 }
 .instruct {
   border-color: black;
@@ -76,6 +77,15 @@ body {
 }
 #updateForm {
   overflow: hidden;
+}
+#exerciseProblem{
+  border-top: 2px solid black;
+}
+#exerciseName {
+  color: black;
+}
+#exerciseDiv {
+  border: 2px solid black;
 }
 #exerciseIdTitle {
   margin-bottom: 33px;

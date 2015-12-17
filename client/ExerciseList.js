@@ -10,10 +10,10 @@ var ExerciseList = React.createClass({
 
   render: function() {
     return(
-      <div className="">
-        <div className="well">
-          <h1>{this.props.data ? this.props.data.name : ''}</h1>
-          <h4>{this.props.data ? this.props.data.problem : ''}</h4>
+      <div>
+        <div id="exerciseDiv" className="well">
+          <h1 id="exerciseName">{this.props.data ? this.props.data.name : ''}</h1>
+          <h4 id="exerciseProblem"><strong>Solve this</strong>: {this.props.data ? this.props.data.problem : ''}</h4>
         </div>
       </div>
       );
