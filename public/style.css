@@ -5,6 +5,9 @@ code {
 body {
   background-color: black;
 }
+#practiceBody {
+  background-color: grey;
+}
 .panel {
   margin-top: 5px;
   margin-left: auto;
@@ -41,7 +44,7 @@ body {
 }
 
 .navbar {
-  background-color: bisque;
+  background-color: white;
   margin-bottom: 0;
   border-bottom: 2px solid #777;
 }

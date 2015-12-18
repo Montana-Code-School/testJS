@@ -8,7 +8,7 @@
           <ul class="nav navbar-nav navbar-right">
             <% if(!user) { %>
               <li><a><button type='button' class="btn btn-menu" data-toggle='modal' data-target='#loginModal'>Login</button></a></li>
-              <li><a><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#signupModal'>Sign Up</button></a></li>
+              <li><a><button type='button' class='btn btn-menu' data-toggle='modal' data-target='#signupModal'>Sign Up</button></a></li>
 
             <!-- Admin navbar -->
             <%} else if (user.local.role === 'admin') { %>

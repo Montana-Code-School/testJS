@@ -25,7 +25,7 @@ function drawAllToCanvas () {
         
 
         ctx.lineWidth = 4;
-        ctx.strokeStyle = 'tomato';
+        ctx.strokeStyle = 'yellow';
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 0;
         ctx.shadowBlur = 10;

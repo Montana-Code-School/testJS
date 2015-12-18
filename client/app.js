@@ -97,11 +97,11 @@ var App = React.createClass({
         if (data.pass){
           $(self.refs.alert).children().remove();
           $(self.refs.alert).append('<div></div>');
-          $(self.refs.alert).children().append('<div class="alert alert-success alert-message" role="alert"><p>Correct!<p></div>')
+          $(self.refs.alert).children().append('<div class="alert alert-success alert-message" role="alert"><p>Correct!<p></div>').fadeOut(5000)
         } else {
           $(self.refs.alert).children().remove();
           $(self.refs.alert).append('<div></div>');
-          $(self.refs.alert).children().append('<div class="alert alert-danger alert-message" role="alert"><p> Incorrect, try again! <p></div>')
+          $(self.refs.alert).children().append('<div class="alert alert-danger alert-message" role="alert"><p> Incorrect, try again! <p></div>').fadeOut(5000)
         }
 
       },
@@ -155,7 +155,7 @@ var App = React.createClass({
           <button onClick={this.getPrevQuestion.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handlePrev" disabled={disPrev} > Previous </button>
           <button onClick={this.sendCodeToServer.bind(this, this.state.code)} type="submit" className="btn btn-default" id="handleSubmit"> Submit </button>
           <button onClick={this.getNextQuestion} type="submit" className="btn btn-default" id="handleNext" disabled={disNext} > Next </button>
-          <button type="button" className="btn btn-danger" data-toggle="popover" title="Hint" data-content="Heres a hint: ">Hint</button>
+          <button type="button" className="btn btn-danger" data-toggle="popover" title="Hint" data-content="Heres a hint: Looks like a syntax error to me!">Hint</button>
         </div>
       </div>
     );
