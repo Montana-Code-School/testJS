@@ -9,6 +9,7 @@ var s = new Sandbox();
 
 module.exports = function(app, passport) {
 
+  var validExercises = [];
 
   app.get('/api/exercises/', function(req, res) {
     mongoose.model('Exercises').find({})
@@ -90,8 +91,6 @@ module.exports = function(app, passport) {
         }
       });
   });
-
-  var validExercises = [];
 
   app.get('/api/user/exercises/', function(req, res) {
     mongoose.model('Exercises').find({})
