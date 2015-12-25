@@ -14,6 +14,10 @@ function drawAllToCanvas () {
           x: 210,
           y: 280
         };
+        var end = {
+          x: 1700,
+          y: 1700
+        }
 
         var myLine = {
           x: c.width / 4,
@@ -28,8 +32,8 @@ function drawAllToCanvas () {
         ctx.strokeStyle = 'yellow';
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 0;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = 'silver';
+        ctx.shadowBlur = 0;
+        ctx.shadowColor = 'grey';
 
         function drawLineAcross () {
 

@@ -11,26 +11,28 @@ var UserExerciseData = React.createClass({
   render: function() {
     var exercise = this.props.data.map(function(c) {
       var result = c.pass === true ? 'pass' : 'fail';
-      return (
-        <div key={c._id} className="well">
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th>Exercise</th>
-                  <th>Answer</th>
-                  <th>Result</th>
-                </tr>
-              </thead>
-              <tbody>
+        if(result === 'pass'){
+          return (
+            <div key={c._id} className="well">
+            <table className="table table-bordered">
+              <thead>
                 <tr>
-                  <td>{c.exercise}</td>
-                  <td>{c.answer}</td>
-                  <td>{result}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-      );
+                  <th>Exercise</th>
+                    <th>Answer</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{c.exercise.problem}</td>
+                    <td>{c.answer}</td>
+                    <td>{result}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          );
+        }
     });
     return (
       <div>

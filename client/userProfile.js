@@ -22,7 +22,7 @@ var UserProfile = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
-        console.log('inside success');
+        console.log('getting userAnswers from server', data);
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -40,4 +40,4 @@ var UserProfile = React.createClass({
   }
 });
 
-ReactDOM.render(<UserProfile url="/api/answer/"/>, document.getElementById('profile-comp'));
+ReactDOM.render(<UserProfile url="/api/user/answer/"/>, document.getElementById('profile-comp'));
